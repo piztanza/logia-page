@@ -1,6 +1,6 @@
 import { NetworkBackground } from "./components/NetworkBackground";
 import { Button } from "./components/ui/button";
-import { ArrowRight, Building2, Brain, Code, Linkedin, Github } from "lucide-react";
+import { ArrowRight, Building2, Brain, Code, Linkedin, Github, Globe } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 
 const founders = [
@@ -22,7 +22,8 @@ const founders = [
     image: "/images/pasfoto_ghany.png",
     bio: "Ghany bridges our advanced technology with real-world market needs. With a background as a Product Owner and ERP Specialist, he ensures our solution solves critical business problems.",
     social: {
-      linkedin: "https://www.linkedin.com/in/ghany-widito-baskoro-462221191/"
+      linkedin: "https://www.linkedin.com/in/ghany-widito-baskoro-462221191/",
+      website: "https://www.ghanywiditobaskoro.web.id/"
     }
   },
   {
@@ -140,6 +141,16 @@ export default function App() {
                         className="w-9 h-9 rounded-full bg-[#1a2332] flex items-center justify-center hover:bg-[#3B82F6] transition-colors group"
                       >
                         <Github className="w-5 h-5 text-[#9CA3AF] group-hover:text-white transition-colors" />
+                      </a>
+                    )}
+                    {founder.social.website && (
+                      <a 
+                        href={founder.social.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-9 h-9 rounded-full bg-[#1a2332] flex items-center justify-center hover:bg-[#3B82F6] transition-colors group"
+                      >
+                        <Globe className="w-5 h-5 text-[#9CA3AF] group-hover:text-white transition-colors" />
                       </a>
                     )}
                   </div>

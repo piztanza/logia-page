@@ -1652,3 +1652,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: none;
   }
 }
+/* Ensure pointer cursor on hover for shared Button component */
+button[data-slot="button"]:hover {
+  cursor: pointer;
+}

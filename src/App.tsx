@@ -76,13 +76,15 @@ export default function App() {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-            <Button 
-              size="lg" 
-              className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-8 py-6 text-lg group"
-            >
-              Schedule a Research Interview
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <a href="/schedule.html">
+              <Button 
+                size="lg" 
+                className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-8 py-6 text-lg group"
+              >
+                Schedule a Research Interview
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </a>
           </div>
         </div>
 
@@ -216,13 +218,15 @@ export default function App() {
             </p>
           </div>
           
-          <Button 
-            size="lg" 
-            className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-10 py-6 text-lg group"
-          >
-            Book Your Research Session
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <a href="/schedule.html">
+            <Button 
+              size="lg" 
+              className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-10 py-6 text-lg group"
+            >
+              Book Your Research Session
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </a>
           
           <p className="text-sm text-[#9CA3AF] pt-4">
             30-minute sessions · No commitment required · Early access opportunity

@@ -1,4 +1,5 @@
 import { NetworkBackground } from "./components/NetworkBackground";
+import { useEffect, useState } from "react";
 import { Button } from "./components/ui/button";
 import { ArrowRight, Building2, Brain, Code, Linkedin, Github, Globe } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
@@ -58,10 +59,65 @@ const expertise = [
 ];
 
 export default function App() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 5);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const headerStyle: React.CSSProperties = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 20,
+    background: scrolled ? "rgba(15, 20, 25, 0.9)" : "transparent",
+    borderBottom: scrolled ? "1px solid #2a3444" : "1px solid transparent",
+    backdropFilter: scrolled ? "saturate(150%) blur(8px)" : "none",
+  };
   return (
     <div className="min-h-screen bg-[#121826] text-[#E5E7EB] overflow-x-hidden">
+      <header className="w-full" style={headerStyle}>
+        <div className="max-w-10xl mx-auto flex items-center pl-2 pr-6 py-3" style={{ justifyContent: 'space-between' }}>
+          <a href="/" aria-label="Logia Initiative Home" className="inline-flex items-center shrink-0">
+            <img
+              src="/images/Logo-Logia.png"
+              alt="Logia Initiative"
+              className="h-40 w-auto shrink-0"
+              loading="eager"
+              decoding="async"
+            />
+          </a>
+          <nav className="hidden md:flex items-center" style={{ gap: "9px", display: 'flex' }}>
+            <a 
+              href="#team" 
+              className="px-4 py-2 rounded-full text-sm text-[#9CA3AF] border border-[#2a3444] hover:border-[#3B82F6] hover:text-white transition-colors whitespace-nowrap"
+            >
+              Team
+            </a>
+            <a 
+              href="#expertise" 
+              className="px-4 py-2 rounded-full text-sm text-[#9CA3AF] border border-[#2a3444] hover:border-[#3B82F6] hover:text-white transition-colors whitespace-nowrap"
+            >
+              Expertise
+            </a>
+            <a 
+              href="#contact" 
+              className="px-4 py-2 rounded-full text-sm text-white bg-[#3B82F6] hover:bg-[#2563EB] transition-colors whitespace-nowrap"
+            >
+              Book Research
+            </a>
+          </nav>
+        </div>
+      </header>
+      <div style={{ height: 184 }} />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
+      <section id="home" className="relative min-h-screen flex items-center justify-center px-6 py-20">
         <NetworkBackground />
         
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
@@ -97,7 +153,7 @@ export default function App() {
       </section>
 
       {/* Meet The Team Section */}
-      <section className="py-32 px-6 bg-gradient-to-b from-[#121826] to-[#0f1419]">
+      <section id="team" className="py-32 px-6 bg-gradient-to-b from-[#121826] to-[#0f1419]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-20">
             <h2 className="text-4xl md:text-5xl">Meet The Team</h2>
@@ -173,7 +229,7 @@ export default function App() {
       </section>
 
       {/* Collective Expertise Section */}
-      <section className="py-32 px-6">
+      <section id="expertise" className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-20">
             <h2 className="text-4xl md:text-5xl">Collective Expertise</h2>
@@ -207,7 +263,7 @@ export default function App() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-32 px-6 bg-gradient-to-t from-[#121826] to-[#0f1419]">
+      <section id="contact" className="py-32 px-6 bg-gradient-to-t from-[#121826] to-[#0f1419]">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4">
             <h2 className="text-4xl md:text-5xl">Let's Shape the Future Together</h2>
@@ -235,9 +291,32 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-[#2a3444]">
-        <div className="max-w-7xl mx-auto text-center text-[#9CA3AF]">
-          <p>© 2025 AI Startup. Building intelligent systems for tomorrow.</p>
+      <footer className="footer">
+        <div className="footer-inner">
+          <div className="footer-grid">
+            <div>
+              <div className="footer-title">Address:</div>
+              <div className="footer-text">South Tangerang, Indonesia</div>
+              <div className="footer-text">info@logia-initiative.com</div>
+            </div>
+            <div>
+              <div className="footer-title">Contact:</div>
+              <div className="footer-text">+62 813-1873-2870</div>
+              <div className="footer-text">sales@logia-initiative.com</div>
+            </div>
+            <div style={{ justifySelf: 'end', display: 'flex', alignItems: 'center' }}>
+              <a 
+                href="https://www.linkedin.com/company/logia-initiative/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Logia Initiative on LinkedIn"
+              >
+                <img src="/images/LinkedIn-Logo.png" alt="LinkedIn" className="h-10 w-auto" />
+              </a>
+            </div>
+          </div>
+          <div style={{ marginTop: 24, height: 1, background: '#2a3444' }}></div>
+          <div style={{ color: '#9CA3AF', fontSize: 14, textAlign: 'center', marginTop: 16 }}>© 2025 Logia Initiative</div>
         </div>
       </footer>
     </div>

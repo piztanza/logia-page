@@ -15,7 +15,7 @@ export default function Footer() {
           </div>
           <div style={{ justifySelf: 'end', display: 'flex', alignItems: 'center' }}>
             <a href="https://www.linkedin.com/company/logia-initiative/" target="_blank" rel="noopener noreferrer" aria-label="Logia Initiative on LinkedIn">
-              <img src="/images/LinkedIn-Logo.png" alt="LinkedIn" className="h-10 w-auto" />
+              <img src="/images/LinkedIn-Logo.png" alt="LinkedIn logo" className="h-10 w-auto" loading="lazy" decoding="async" />
             </a>
           </div>
         </div>

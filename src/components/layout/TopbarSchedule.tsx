@@ -5,7 +5,7 @@ export default function TopbarSchedule() {
     <div className={styles.topbar}>
       <div className={styles.topbarInner}>
         <a href="/" className={styles.brand} aria-label="Logia Initiative Home">
-          <img src="/images/Logo-Logia.png" alt="Logia Initiative" />
+          <img src="/images/Logo-Logia.png" alt="Logia Initiative logo" loading="eager" decoding="async" />
         </a>
         <a className={styles.backLink} href="/" aria-label="Back to Home">
           <span style={{ display: 'inline-block', transform: 'translateY(-1px)' }}>←</span>

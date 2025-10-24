@@ -4,6 +4,7 @@ import Header from '../../components/layout/Header';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Building2, Brain, Code, Linkedin, Github, Globe } from 'lucide-react';
 import { ImageWithFallback } from '../../components/common/ImageWithFallback';
+import { Helmet } from 'react-helmet-async';
 
 const founders = [
   {
@@ -65,16 +66,60 @@ const expertise = [
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#121826] text-[#E5E7EB] overflow-x-hidden">
+      <Helmet>
+        <title>Logia Initiative | AI Enterprise Solutions, Knowledge Graphs, Product Strategy</title>
+        <meta
+          name="description"
+          content="We build AI enterprise solutions powered by Knowledge Graphs—bridging product strategy and software engineering to deliver measurable ROI."
+        />
+        <link rel="canonical" href="https://www.logia-initiative.com/" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Logia Initiative" />
+        <meta property="og:title" content="AI Enterprise Solutions | Logia Initiative" />
+        <meta property="og:description" content="Knowledge Graphs, Product Strategy, and Software Engineering for enterprises." />
+        <meta property="og:url" content="https://www.logia-initiative.com/" />
+        <meta property="og:image" content="https://www.logia-initiative.com/images/Logo-Logia.png" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI Enterprise Solutions | Logia Initiative" />
+        <meta name="twitter:description" content="Knowledge Graphs, Product Strategy, and Software Engineering for enterprises." />
+        <meta name="twitter:image" content="https://www.logia-initiative.com/images/Logo-Logia.png" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'Logia Initiative',
+            url: 'https://www.logia-initiative.com/',
+            logo: 'https://www.logia-initiative.com/images/Logo-Logia.png',
+            sameAs: [
+              'https://www.linkedin.com/company/logia-initiative/',
+              'https://github.com/piztanza',
+            ],
+            contactPoint: [
+              {
+                '@type': 'ContactPoint',
+                contactType: 'sales',
+                email: 'sales@logia-initiative.com',
+                telephone: '+62 813-1873-2870',
+                areaServed: 'ID',
+              },
+            ],
+          })}
+        </script>
+      </Helmet>
+
       <Header />
-      <div style={{ height: 184 }} />
-      <section id="home" className="relative min-h-screen flex items-center justify-center px-6 py-20">
+      <main>
+        <div style={{ height: 184 }} />
+        <section id="home" className="relative min-h-screen flex items-center justify-center px-6 py-20">
         <NetworkBackground />
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl tracking-tight">Intelligence. Connectivity. Clarity.</h1>
+            <h1 className="text-5xl md:text-7xl tracking-tight">AI Enterprise Solutions with Knowledge Graphs for Measurable ROI</h1>
             <p className="text-xl md:text-2xl text-[#9CA3AF] max-w-3xl mx-auto leading-relaxed">
-              Building the next generation of AI-powered enterprise solutions. 
-              Meet the team transforming how organizations harness knowledge.
+              We connect product strategy and software engineering to build scalable, secure systems your teams can trust.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
@@ -109,7 +154,9 @@ export default function HomePage() {
                 <div className="relative overflow-hidden rounded-2xl aspect-[3/4] bg-[#1a2332]">
                   <ImageWithFallback
                     src={founder.image}
-                    alt={founder.name}
+                    alt={`Photo of ${founder.name}, ${founder.role} at Logia Initiative`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#121826] via-transparent to-transparent opacity-60"></div>
@@ -121,17 +168,17 @@ export default function HomePage() {
                   </div>
                   <div className="flex gap-4 pt-2">
                     {founder.social.linkedin && (
-                      <a href={founder.social.linkedin} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-[#1a2332] flex items-center justify-center hover:bg-[#3B82F6] transition-colors group">
+                      <a href={founder.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn profile of ${founder.name}`} className="w-9 h-9 rounded-full bg-[#1a2332] flex items-center justify-center hover:bg-[#3B82F6] transition-colors group">
                         <Linkedin className="w-5 h-5 text-[#9CA3AF] group-hover:text-white transition-colors" />
                       </a>
                     )}
                     {founder.social.github && (
-                      <a href={founder.social.github} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-[#1a2332] flex items-center justify-center hover:bg-[#3B82F6] transition-colors group">
+                      <a href={founder.social.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub profile of ${founder.name}`} className="w-9 h-9 rounded-full bg-[#1a2332] flex items-center justify-center hover:bg-[#3B82F6] transition-colors group">
                         <Github className="w-5 h-5 text-[#9CA3AF] group-hover:text-white transition-colors" />
                       </a>
                     )}
                     {founder.social.website && (
-                      <a href={founder.social.website} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-[#1a2332] flex items-center justify-center hover:bg-[#3B82F6] transition-colors group">
+                      <a href={founder.social.website} target="_blank" rel="noopener noreferrer" aria-label={`Website of ${founder.name}`} className="w-9 h-9 rounded-full bg-[#1a2332] flex items-center justify-center hover:bg-[#3B82F6] transition-colors group">
                         <Globe className="w-5 h-5 text-[#9CA3AF] group-hover:text-white transition-colors" />
                       </a>
                     )}
@@ -193,6 +240,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

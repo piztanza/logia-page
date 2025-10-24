@@ -4,6 +4,8 @@ COPY package.json package-lock.json* ./
 # Use ci if lockfile exists, otherwise fallback to install
 RUN npm ci --no-audit --no-fund || npm install --no-audit --no-fund
 COPY . .
+# Skip react-snap in container to avoid bundling Chromium
+ENV SKIP_SNAP=true
 RUN npm run build
 
 FROM nginx:alpine

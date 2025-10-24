@@ -72,27 +72,27 @@ export default function HomePage() {
           name="description"
           content="We build AI enterprise solutions powered by Knowledge Graphs—bridging product strategy and software engineering to deliver measurable ROI."
         />
-        <link rel="canonical" href="https://www.logia-initiative.com/" />
+        <link rel="canonical" href="https://logia-initiative.com/" />
 
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Logia Initiative" />
         <meta property="og:title" content="AI Enterprise Solutions | Logia Initiative" />
         <meta property="og:description" content="Knowledge Graphs, Product Strategy, and Software Engineering for enterprises." />
-        <meta property="og:url" content="https://www.logia-initiative.com/" />
-        <meta property="og:image" content="https://www.logia-initiative.com/images/Logo-Logia.png" />
+        <meta property="og:url" content="https://logia-initiative.com/" />
+        <meta property="og:image" content="https://logia-initiative.com/images/Logo-Logia.png" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="AI Enterprise Solutions | Logia Initiative" />
         <meta name="twitter:description" content="Knowledge Graphs, Product Strategy, and Software Engineering for enterprises." />
-        <meta name="twitter:image" content="https://www.logia-initiative.com/images/Logo-Logia.png" />
+        <meta name="twitter:image" content="https://logia-initiative.com/images/Logo-Logia.png" />
 
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Organization',
             name: 'Logia Initiative',
-            url: 'https://www.logia-initiative.com/',
-            logo: 'https://www.logia-initiative.com/images/Logo-Logia.png',
+            url: 'https://logia-initiative.com/',
+            logo: 'https://logia-initiative.com/images/Logo-Logia.png',
             sameAs: [
               'https://www.linkedin.com/company/logia-initiative/',
               'https://github.com/piztanza',

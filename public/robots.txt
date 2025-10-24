@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.logia-initiative.com/sitemap.xml
+Sitemap: https://logia-initiative.com/sitemap.xml
 
 

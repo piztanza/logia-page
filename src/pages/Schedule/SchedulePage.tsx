@@ -10,13 +10,13 @@ export default function SchedulePage() {
         <title>Book a Research Interview | Logia Initiative</title>
         <meta name="robots" content="noindex,follow" />
         <meta name="description" content="Book a 30-minute research interview with Logia Initiative." />
-        <link rel="canonical" href="https://www.logia-initiative.com/schedule" />
+        <link rel="canonical" href="https://logia-initiative.com/schedule" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Book a Research Interview | Logia Initiative" />
         <meta property="og:description" content="Share your insights on enterprise knowledge management." />
-        <meta property="og:url" content="https://www.logia-initiative.com/schedule" />
-        <meta property="og:image" content="https://www.logia-initiative.com/images/Logo-Logia.png" />
+        <meta property="og:url" content="https://logia-initiative.com/schedule" />
+        <meta property="og:image" content="https://logia-initiative.com/images/Logo-Logia.png" />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Book a Research Interview | Logia Initiative" />

@@ -1,11 +1,27 @@
+# app-v2
 
-  # Landing Page Design
+Rebuilt React SPA (Create React App + TypeScript) for Logia Initiative. No Vite. Clean styling with CSS Modules and scoped globals. Ready for Google Cloud Run.
 
-  This is a code bundle for Landing Page Design. The original project is available at https://www.figma.com/design/9P90CMQKXdMtQ3hWBi1grA/Landing-Page-Design.
+## Scripts
+- npm start
+- npm run build
 
-  ## Running the code
+## Run locally
+```
+npm ci
+npm start
+```
 
-  Run `npm i` to install the dependencies.
+## Build
+```
+npm run build
+```
 
-  Run `npm run dev` to start the development server.
-  
+## Docker (Cloud Run)
+```
+docker build -t app-v2:latest .
+```
+
+Deploy to Cloud Run with your preferred workflow. Container listens on $PORT (8080).
+
+

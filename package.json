@@ -6,7 +6,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "node -e \"if(process.env.SKIP_SNAP==='true'){console.log('Skipping react-snap in CI');process.exit(0)}\" && react-snap",
+    "postbuild": "node -e \"if(process.env.SKIP_SNAP==='true'){console.log('Skipping react-snap in CI');process.exit(0)}else{process.exit(1)}\" || react-snap",
     "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject"
   },

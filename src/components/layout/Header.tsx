@@ -28,8 +28,10 @@ export default function Header() {
         </a>
 
         <nav className={styles.desktopNav}>
-          <a href="#team" className={styles.desktopLink}>Team</a>
-          <a href="#expertise" className={styles.desktopLink}>Expertise</a>
+          <a href="/#about" className={styles.desktopLink}>About</a>
+          <Link to="/products" className={styles.desktopLink}>Products</Link>
+          <a href="/#team" className={styles.desktopLink}>Team</a>
+          <a href="/#expertise" className={styles.desktopLink}>Expertise</a>
           <Link to="/schedule" className={styles.ctaLink}>Book Research</Link>
         </nav>
 
@@ -44,11 +46,13 @@ export default function Header() {
         </button>
       </div>
 
-      {isOpen && (
+        {isOpen && (
         <div className={styles.mobilePanel}>
           <div className="flex flex-col" style={{ gap: 8 }}>
-            <a href="#team" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Team</a>
-            <a href="#expertise" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Expertise</a>
+            <a href="/#about" className={styles.mobileLink} onClick={() => setIsOpen(false)}>About</a>
+            <Link to="/products" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Products</Link>
+            <a href="/#team" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Team</a>
+            <a href="/#expertise" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Expertise</a>
             <Link to="/schedule" className={styles.mobileCTA} onClick={() => setIsOpen(false)}>Book Research</Link>
           </div>
         </div>

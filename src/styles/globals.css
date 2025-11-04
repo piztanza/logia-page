@@ -67,3 +67,93 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* About section heading responsive margins */
+.about-heading {
+  margin: 22px 0 22px 0;
+}
+
+@media (min-width: 768px) {
+  .about-heading {
+    margin: 38px 0 38px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--text-4xl--line-height);
+  }
+}
+
+/* Grid utilities */
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.gap-16 {
+  gap: 4rem;
+}
+
+/* Spacing utilities */
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
+}
+
+.p-12 {
+  padding: 3rem;
+}
+
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+@media (min-width: 768px) {
+  .md\:my-12 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .md\:p-10 {
+    padding: 2.5rem;
+  }
+  
+  .md\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .lg\:gap-16 {
+    gap: 4rem;
+  }
+  
+  .lg\:my-16 {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+  
+  .lg\:p-12 {
+    padding: 3rem;
+  }
+  
+  .lg\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+

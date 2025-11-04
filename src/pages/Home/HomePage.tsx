@@ -112,16 +112,18 @@ export default function HomePage() {
 
       <Header />
       <main>
-        <div style={{ height: 184 }} />
-        <section id="home" className="relative min-h-screen flex items-center justify-center px-6 py-20">
+        <div style={{ height: 76 }} />
+        <section id="home" className="relative min-h-screen flex items-center justify-center px-6">
         <NetworkBackground />
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl tracking-tight">AI Enterprise Solutions with Knowledge Graphs for Measurable ROI</h1>
+            <h1 className="text-5xl md:text-7xl tracking-tight">Clarity in Complexity.</h1>
             <p className="text-xl md:text-2xl text-[#9CA3AF] max-w-3xl mx-auto leading-relaxed">
-              We connect product strategy and software engineering to build scalable, secure systems your teams can trust.
+            {/* We build Agentic AI to turn complex enterprise data into actionable assurance. */}
+            Our Agentic AI uses a Knowledge Graph semantic layer to understand your data and provide actionable insights.
             </p>
           </div>
+          {/*
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <Link to="/schedule">
               <button 
@@ -132,11 +134,66 @@ export default function HomePage() {
               </button>
             </Link>
           </div>
+          */}
+
+          <div className="max-w-5xl mx-auto bg-brand-light rounded-2xl p-6 border border-slate-700 shadow-xl">
+            {/* <div className="border-2 border-dashed border-slate-600 rounded-lg flex items-center justify-center" style={{ height: 413 }}> */}
+            <div className="mt-6 flex justify-center">
+              <img
+                src="/images/kg_example.png"
+                alt="Example knowledge graph"
+                style={{ maxHeight: 413 }}
+                className="rounded-md border border-slate-700"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            {/* </div> */}
+          </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-[#3B82F6] rounded-full flex items-start justify-center p-2">
             <div className="w-1 h-2 bg-[#3B82F6] rounded-full"></div>
+          </div>
+        </div> */}
+      </section>
+
+      <section id="about" className="px-6">
+        <div className="max-w-4xl mx-auto text-[#9CA3AF] space-y-16">
+          <div style={{ marginTop: 80 }}>
+            <h2 className="about-heading text-2xl md:text-4xl text-[#3B82F6] text-center" style={{ fontWeight: 700 }}>The Enterprise Audit Black Hole</h2>
+            <div className="text-lg space-y-4">
+              <p style={{ textAlign: 'justify' }}>
+                Logia Initiative was born from a problem we’ve seen firsthand for decades. Enterprises run on massive, complex ERP databases. Yet, when it comes to the most critical function of auditing for policy compliance the process is fundamentally broken. Auditors, who understand policy, are disconnected from IT, who understand the database. This gap creates a 'black hole' of manual work.
+              </p>
+              <p style={{ textAlign: 'justify' }}>
+                This isn't just inefficient; it's dangerous. Critical compliance validation, which demands speed and accuracy, becomes a slow, resource-draining, and error-prone process. Teams spend weeks manually collecting data instead of minutes. By the time an issue is found, it's often too late. We knew there had to be a better way.
+              </p>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 80 }}>
+            <h2 className="about-heading text-2xl md:text-4xl text-white text-center" style={{ fontWeight: 700 }}>Building the Bridge: From Policy to Database</h2>
+            <div className="text-lg space-y-4">
+              <p style={{ textAlign: 'justify' }}>
+                We didn't just want to build another dashboard. We set out to solve the root problem: <strong>translation</strong>. We believe the only way to achieve real-time assurance is to build a system that understand <strong>both</strong> the policy documents and the database schema.
+              </p>
+              <p style={{ textAlign: 'justify' }}>
+                Our solution is an <strong>Agentic AI</strong> built on a revolutionary foundation: an <strong>Autonomous Semantic Layer</strong>. This layer acts as a universal translator, dynamically mapping your complex ERP structure. Our AI uses this 'map' to read your policy documents and then execute autonomous, end-to-end audits directly against your data. No manual queries, no reconciliation, no 'black hole'.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-5xl mx-auto bg-[#1a2332] rounded-2xl p-8 border border-[#2a3444]" style={{ marginTop: 80 }}>
+          <h2 className="about-heading text-2xl md:text-4xl text-white text-center" style={{ fontWeight: 800 }}>Founded by Experts in the Trenches</h2>
+          <div className="text-lg text-[#9CA3AF] flex flex-col sm:flex-row gap-12">
+            <p style={{ textAlign: 'justify', flex: 1 }}>
+              Logia Initiative isn't run by theorists; we are a team of veteran enterprise architects, ERP specialists, DevSecOps, and AI researchers. We have spent our careers navigating the complex systems we now seek to automate. We’ve managed the databases, written the policies, and felt the pain of the audit process.
+            </p>
+            <p style={{ textAlign: 'justify', flex: 1 }}>
+              Our mission is to give enterprises true control over their own data. We are building the autonomous systems that finally close the loop between operations, data, and policy, turning your ERP from a complex liability into your greatest source of assurance.
+            </p>
           </div>
         </div>
       </section>

@@ -140,8 +140,8 @@ export default function HomePage() {
             {/* <div className="border-2 border-dashed border-slate-600 rounded-lg flex items-center justify-center" style={{ height: 413 }}> */}
             <div className="mt-6 flex justify-center">
               <img
-                src="/images/kg_example.png"
-                alt="Example knowledge graph"
+                src="/images/gif/LogiaDemo.gif"
+                alt="Logia Demo"
                 style={{ maxHeight: 413 }}
                 className="rounded-md border border-slate-700"
                 loading="lazy"

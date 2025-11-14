@@ -28,7 +28,7 @@
   },
   "reactSnap": {
     "crawl": false,
-    "include": ["/", "/schedule"],
+    "include": ["/", "/products", "/schedule"],
     "skipThirdPartyRequests": true,
     "puppeteerArgs": ["--no-sandbox"]
   },

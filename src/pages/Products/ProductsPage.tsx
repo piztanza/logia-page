@@ -10,21 +10,69 @@ export default function ProductsPage() {
         <title>Products & Services | Logia Initiative</title>
         <meta
           name="description"
-          content="We build autonomous systems and provide expert guidance to solve your most complex enterprise data challenges."
+          content="AI Enterprise Audit for ERP Policy Compliance and Enterprise System Consulting. Autonomous audit system and expert guidance to solve complex enterprise data challenges."
         />
+        <meta name="keywords" content="AI Enterprise Audit, Enterprise System Consulting, ERP Audit, Policy Compliance Automation, Agentic AI, Business Process Standardization, Data Integrity Audit, AI-Readiness Strategy" />
+        <meta name="author" content="Logia Initiative" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href="https://logia-initiative.com/products" />
-        
+
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Logia Initiative" />
         <meta property="og:title" content="Products & Services | Logia Initiative" />
-        <meta property="og:description" content="AI Enterprise Audit and Enterprise System Consulting for your organization." />
+        <meta property="og:description" content="AI Enterprise Audit for ERP Policy Compliance and Enterprise System Consulting. Autonomous solutions for complex enterprise data challenges." />
         <meta property="og:url" content="https://logia-initiative.com/products" />
         <meta property="og:image" content="https://logia-initiative.com/images/Logo-Logia.png" />
-        
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Logia Initiative Products - AI Enterprise Audit and Consulting" />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Products & Services | Logia Initiative" />
         <meta name="twitter:description" content="AI Enterprise Audit and Enterprise System Consulting for your organization." />
         <meta name="twitter:image" content="https://logia-initiative.com/images/Logo-Logia.png" />
+        <meta name="twitter:image:alt" content="Logia Initiative Products" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Logia Initiative Products & Services',
+            description: 'AI Enterprise Audit and Enterprise System Consulting solutions',
+            itemListElement: [
+              {
+                '@type': 'Product',
+                position: 1,
+                name: 'AI Enterprise Audit',
+                description: 'Agentic AI ERP Auditing & Policy Compliance system that autonomously audits your entire ERP database using your company\'s policy documents.',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Logia Initiative'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  availability: 'https://schema.org/InStock',
+                  price: '0',
+                  priceCurrency: 'USD',
+                  description: 'Contact for pricing'
+                }
+              },
+              {
+                '@type': 'Service',
+                position: 2,
+                name: 'Enterprise System Consultant',
+                description: 'Expert guidance for business process standardization, ERP data integrity audits, and AI-readiness strategy.',
+                provider: {
+                  '@type': 'Organization',
+                  name: 'Logia Initiative'
+                },
+                areaServed: 'ID',
+                serviceType: 'Enterprise Data Consulting'
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

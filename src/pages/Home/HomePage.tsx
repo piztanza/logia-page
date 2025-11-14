@@ -31,7 +31,7 @@ const founders = [
   },
   {
     name: 'Muhammad Salman Al Hafizh',
-    role: 'Lead Software Engineer',
+    role: 'Lead Software Engineer and Cloud Architecture',
     expertise: 'Technical Leadership',
     image: '/images/pasfoto_hafizh.png',
     bio: 'Salman is the technical execution force turning complex architecture into a robust, scalable product. His experience as a Lead Developer ensures our vision is realized as an enterprise-ready platform.',
@@ -67,32 +67,53 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#121826] text-[#E5E7EB] overflow-x-hidden">
       <Helmet>
-        <title>Logia Initiative | AI Enterprise Solutions, Knowledge Graphs, Product Strategy</title>
+        <title>Logia Initiative | AI Enterprise | Audit for Real-time Assurance</title>
         <meta
           name="description"
-          content="We build AI enterprise solutions powered by Knowledge Graphs—bridging product strategy and software engineering to deliver measurable ROI."
+          content="GRC System. Logia AI closes the 'Audit Black Hole' by connecting SOPs to live ERP data. Get 100% verified assurance in minutes. Schedule a demo. Free Consultation & Discussion."
         />
+        <meta name="keywords" content="AI Enterprise Audit, ERP Audit, Governance Risk Compliance, GRC System, Policy Compliance, Agentic AI, Knowledge Graph, Enterprise Audit Automation, Real-time Assurance, SOPs Automation" />
+        <meta name="author" content="Logia Initiative" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href="https://logia-initiative.com/" />
 
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Logia Initiative" />
-        <meta property="og:title" content="AI Enterprise Solutions | Logia Initiative" />
-        <meta property="og:description" content="Knowledge Graphs, Product Strategy, and Software Engineering for enterprises." />
+        <meta property="og:title" content="Logia Initiative | AI Enterprise | Audit for Real-time Assurance" />
+        <meta property="og:description" content="GRC System. Logia AI closes the 'Audit Black Hole' by connecting SOPs to live ERP data. Get 100% verified assurance in minutes. Schedule a demo. Free Consultation & Discussion." />
         <meta property="og:url" content="https://logia-initiative.com/" />
         <meta property="og:image" content="https://logia-initiative.com/images/Logo-Logia.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Logia Initiative - AI Enterprise Audit for Real-time Assurance" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Enterprise Solutions | Logia Initiative" />
-        <meta name="twitter:description" content="Knowledge Graphs, Product Strategy, and Software Engineering for enterprises." />
+        <meta name="twitter:title" content="Logia Initiative | AI Enterprise | Audit for Real-time Assurance" />
+        <meta name="twitter:description" content="GRC System. Logia AI closes the 'Audit Black Hole' by connecting SOPs to live ERP data. Get 100% verified assurance in minutes." />
         <meta name="twitter:image" content="https://logia-initiative.com/images/Logo-Logia.png" />
+        <meta name="twitter:image:alt" content="Logia Initiative - AI Enterprise Audit" />
 
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Organization',
             name: 'Logia Initiative',
+            alternateName: 'Logia AI',
             url: 'https://logia-initiative.com/',
-            logo: 'https://logia-initiative.com/images/Logo-Logia.png',
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://logia-initiative.com/images/Logo-Logia.png',
+              width: '1200',
+              height: '630'
+            },
+            description: 'GRC System. Logia AI closes the Audit Black Hole by connecting SOPs to live ERP data. Get 100% verified assurance in minutes.',
+            foundingDate: '2024',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'South Tangerang',
+              addressCountry: 'ID'
+            },
             sameAs: [
               'https://www.linkedin.com/company/logia-initiative/',
               'https://github.com/piztanza',
@@ -104,8 +125,68 @@ export default function HomePage() {
                 email: 'sales@logia-initiative.com',
                 telephone: '+62 813-1873-2870',
                 areaServed: 'ID',
+                availableLanguage: ['en', 'id']
               },
+              {
+                '@type': 'ContactPoint',
+                contactType: 'customer support',
+                email: 'info@logia-initiative.com',
+                areaServed: 'ID',
+                availableLanguage: ['en', 'id']
+              }
             ],
+            founder: [
+              {
+                '@type': 'Person',
+                name: 'Fareza Yuza',
+                jobTitle: 'AI Systems Architect'
+              },
+              {
+                '@type': 'Person',
+                name: 'Ghany Widito Baskoro',
+                jobTitle: 'Product & Business Strategist'
+              },
+              {
+                '@type': 'Person',
+                name: 'Muhammad Salman Al Hafizh',
+                jobTitle: 'Lead Software Engineer and Cloud Architecture'
+              }
+            ]
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Logia Initiative',
+            url: 'https://logia-initiative.com/',
+            description: 'GRC System. Logia AI closes the Audit Black Hole by connecting SOPs to live ERP data.',
+            publisher: {
+              '@type': 'Organization',
+              name: 'Logia Initiative'
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'Logia AI Enterprise Audit',
+            applicationCategory: 'BusinessApplication',
+            operatingSystem: 'Web',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'USD',
+              description: 'Contact for pricing'
+            },
+            description: 'Agentic AI ERP Auditing & Policy Compliance system that autonomously audits your entire ERP database using your company\'s policy documents.',
+            featureList: [
+              'Dynamic Semantic Layer',
+              'Policy-to-Database Validation',
+              'Eliminates Manual Collection',
+              'Proactive Continuous Assurance'
+            ]
           })}
         </script>
       </Helmet>

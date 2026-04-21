@@ -1,27 +1,28 @@
-# app-v2
+# Logia Initiative — Landing Page
 
-Rebuilt React SPA (Create React App + TypeScript) for Logia Initiative. No Vite. Clean styling with CSS Modules and scoped globals. Ready for Google Cloud Run.
+Company profile landing page for Logia Initiative, built with Vite + React 19 + TypeScript.
 
-## Scripts
-- npm start
-- npm run build
+## Local Development
 
-## Run locally
-```
+```bash
 npm ci
-npm start
+npm run dev       # Dev server on port 3000
+npm run build     # Production build → dist/
+npm run preview   # Preview production build
+npm run lint      # Type-check (tsc --noEmit)
 ```
 
-## Build
-```
-npm run build
+## Docker
+
+The container builds the Vite bundle and serves the output through nginx on port 8080.
+
+```bash
+docker build -t logia-page:latest .
+docker run -p 8080:8080 logia-page:latest
 ```
 
-## Docker (Cloud Run)
-```
-docker build -t app-v2:latest .
-```
+Open `http://localhost:8080`.
 
-Deploy to Cloud Run with your preferred workflow. Container listens on $PORT (8080).
+## Deployment
 
-
+Auto-deploys to AWS when the configured branch is updated. The container listens on `$PORT=8080`.

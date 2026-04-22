@@ -4,9 +4,10 @@ Dockerfile
 .dockerignore
 .git
 .gitignore
+.env*
+!.env.example
+.claude
 **/.DS_Store
 **/dist
 **/build
 **/.cache
-
-

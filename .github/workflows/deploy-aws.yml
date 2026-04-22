@@ -2,7 +2,7 @@ name: Deploy to AWS S3 + CloudFront
 
 on:
   push:
-    branches: [prod-aws]
+    branches: [dev-aws]
 
 jobs:
   deploy:
@@ -23,8 +23,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          SKIP_SNAP: "true"
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -35,22 +33,18 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync build/ s3://${{ secrets.S3_BUCKET_NAME }} \
+          # Upload hashed assets with long-term cache
+          aws s3 sync dist/ s3://${{ secrets.DEV_S3_BUCKET_NAME }} \
             --delete \
             --cache-control "public, max-age=31536000, immutable" \
-            --exclude "index.html" \
-            --exclude "service-worker.js" \
-            --exclude "asset-manifest.json"
+            --exclude "index.html"
 
-          # Upload HTML and manifests with shorter cache
-          aws s3 cp build/index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html \
+          # Upload HTML with no-cache so browsers always fetch the latest
+          aws s3 cp dist/index.html s3://${{ secrets.DEV_S3_BUCKET_NAME }}/index.html \
             --cache-control "public, max-age=0, must-revalidate"
-
-          aws s3 cp build/asset-manifest.json s3://${{ secrets.S3_BUCKET_NAME }}/asset-manifest.json \
-            --cache-control "public, max-age=0, must-revalidate" || true
 
       - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --distribution-id ${{ secrets.DEV_CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"

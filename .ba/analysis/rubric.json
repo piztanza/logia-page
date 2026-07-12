@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "created_at": "2026-07-12T21:19:02.187Z",
+  "stack": [
+    "React 19",
+    "TypeScript 5.8",
+    "Vite 6",
+    "Tailwind CSS 4",
+    "motion (Framer Motion) 12",
+    "react-helmet-async",
+    "lucide-react",
+    "static SPA served via nginx / Docker",
+    "Web3Forms (third-party form-to-email)"
+  ],
+  "source": "strategy",
+  "sources_cited": [
+    "STRAT-001"
+  ],
+  "dimensions": {
+    "architecture": {
+      "standards": [
+        "structure: src/{components/{layout,sections,ui,common},hooks,lib,config,data,types}. Extract cross-cutting scroll/animation and accessibility concerns into src/hooks and src/lib; centralize third-party integration config (Web3Forms endpoint + access key via import.meta.env, WhatsApp number) in src/config; keep typed section content in src/data.",
+        "pattern: Custom hooks for scroll-driven animation (e.g. useScrollFrames, useSectionProgress) and useReducedMotion.",
+        "pattern: A single site-config module as the source of truth for external integrations.",
+        "pattern: Data-driven sections backed by typed models in src/data."
+      ]
+    },
+    "readability": {
+      "standards": [
+        "All third-party keys and endpoints are read from import.meta.env (Vite env) — never hard-coded string literals; ship .env.example with variable NAMES only.",
+        "Every scroll- or timer-driven animation honors prefers-reduced-motion via a single shared useReducedMotion hook.",
+        "No dead or placeholder links: every nav/footer anchor resolves to a real in-page section, or is removed.",
+        "Strict TypeScript; remove dead/unused modules (e.g. unused GlassCard) and unused env scaffolding.",
+        "Heavy canvas/particle/scroll-frame logic is extracted from section components into dedicated hooks/modules; section components stay presentational."
+      ]
+    },
+    "security": {
+      "standards": [
+        "apply stack-standard security practices (see assessment findings)"
+      ]
+    },
+    "performance": {
+      "standards": [
+        "preserve behaviour; no performance regressions vs the baseline"
+      ]
+    },
+    "test_coverage": {
+      "standards": [
+        "Introduce Vitest + React Testing Library (jsdom) with an `npm test` script wired into CI. Add characterization tests that pin CURRENT behaviour of the conversion-critical paths before refactoring: contact-form validation + submit success/error (with Web3Forms fetch mocked), navigation anchor resolution, and reduced-motion gating. These tests are the green-to-green safety net."
+      ]
+    },
+    "conventions": {
+      "standards": [
+        "All third-party keys and endpoints are read from import.meta.env (Vite env) — never hard-coded string literals; ship .env.example with variable NAMES only.",
+        "Every scroll- or timer-driven animation honors prefers-reduced-motion via a single shared useReducedMotion hook.",
+        "No dead or placeholder links: every nav/footer anchor resolves to a real in-page section, or is removed.",
+        "Strict TypeScript; remove dead/unused modules (e.g. unused GlassCard) and unused env scaffolding.",
+        "Heavy canvas/particle/scroll-frame logic is extracted from section components into dedicated hooks/modules; section components stay presentational."
+      ]
+    }
+  }
+}

@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+
+.ba/triggers/
+.ba/locks/

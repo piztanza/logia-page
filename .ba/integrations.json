@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "integrations": [
+    {
+      "provider": "Web3Forms",
+      "purpose": "Delivers contact-form submissions as email inquiries (form-to-email backend for the lead capture form).",
+      "auth": "api_key",
+      "secrets": [],
+      "feature_refs": [],
+      "note": "The Web3Forms access_key is hard-coded as a string literal in src/components/sections/Contact.tsx, not read from an environment variable, so no ENV secret name applies here.",
+      "id": "INT-001"
+    },
+    {
+      "provider": "WhatsApp (wa.me click-to-chat)",
+      "purpose": "Alternative direct-contact channel: the contact section links to a prefilled wa.me conversation.",
+      "auth": "none",
+      "secrets": [],
+      "feature_refs": [],
+      "note": "The destination WhatsApp phone number is hard-coded in the wa.me link in src/components/sections/Contact.tsx; this is a plain outbound link, not an SDK/API integration.",
+      "id": "INT-002"
+    },
+    {
+      "provider": "Google Gemini API",
+      "purpose": "Declared as an available AI credential via GEMINI_API_KEY (AI Studio scaffolding).",
+      "auth": "api_key",
+      "secrets": [
+        "GEMINI_API_KEY"
+      ],
+      "feature_refs": [],
+      "note": "GEMINI_API_KEY (and APP_URL) appear in .env.example, and vite.config.ts defines process.env.GEMINI_API_KEY, but NO application source code reads or uses it. This looks like leftover Google AI Studio scaffolding rather than an active integration — flagged for human confirmation on whether to keep or remove.",
+      "id": "INT-003"
+    }
+  ]
+}

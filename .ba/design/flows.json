@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "note": "Main user journeys visible in the code. This is an anonymous, unauthenticated marketing site, so every flow is performed by a visitor; there are no logged-in / multi-step account journeys.",
+  "flows": [
+    {
+      "name": "Submit a contact inquiry (lead capture)",
+      "note": "Visitor fills the Contact form → client-side validation (required Contact Person/Company/Email + email pattern) → POST JSON to Web3Forms → 'Inquiry Received' success state on success, or an inline error message on API/network failure while the form stays editable.",
+      "id": "UF-001"
+    },
+    {
+      "name": "Contact via WhatsApp",
+      "note": "Visitor clicks 'Chat on WhatsApp' → opens a prefilled wa.me conversation (hard-coded number + message) in a new tab as an alternative to the form.",
+      "id": "UF-002"
+    },
+    {
+      "name": "Navigate the site via section anchors",
+      "note": "Visitor uses navbar links / logo / CTAs (desktop) or the hamburger overlay menu (mobile/tablet) to smooth-scroll between the anchored sections (About, Services, Methodology, Products, Market, Contact).",
+      "id": "UF-003"
+    },
+    {
+      "name": "Cinematic scroll-through experience",
+      "note": "Loading overlay dismisses once the Services frame asset is ready and 2.5s elapsed → visitor scrolls down through Hero fade/scale → Services scroll-scrubbed 86-frame animation with text-slide swap → Methodology staged parallax points → the rest of the page.",
+      "id": "UF-004"
+    },
+    {
+      "name": "Recover from a render error",
+      "note": "If a render-time error is thrown, the ErrorBoundary catches it and shows the 'System Interruption' fallback; the visitor clicks 'Restart Protocols' to reload the page.",
+      "id": "UF-005"
+    }
+  ]
+}

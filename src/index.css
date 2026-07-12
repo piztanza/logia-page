@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -13,18 +13,6 @@
   --color-brand-darker: #18181b;
   --color-brand-bg: #09090b;
   --color-brand-accent: #0ea5e9;
-
-  @keyframes breathing-bg-glow {
-    0%, 100% {
-      opacity: 0.3;
-      transform: scale(0.9);
-    }
-    50% {
-      opacity: 0.7;
-      transform: scale(1.05);
-    }
-  }
-  --animate-breathing-bg-glow: breathing-bg-glow 2.5s ease-in-out infinite;
 }
 
 @layer base {
@@ -37,17 +25,6 @@
 }
 
 @layer components {
-  .glass-panel {
-    background: rgba(24, 24, 27, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .subtle-glow {
-    box-shadow: 0 0 40px rgba(14, 165, 233, 0.05);
-  }
-
   .bg-grain {
     position: absolute;
     inset: 0;
@@ -65,10 +42,6 @@
     background-size: 40px 40px;
     mask-image: radial-gradient(ellipse at center, black, transparent 80%);
     pointer-events: none;
-  }
-
-  .hero-video-bg {
-    @apply absolute inset-0 w-full h-full z-0;
   }
 
   .hero-overlay-gradient {
@@ -138,27 +111,9 @@
   .value-tag {
     @apply inline-block px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-widest uppercase mb-3 border;
   }
-
-  /* Cinematic Carousel Styles */
-  .service-progress-bg {
-    @apply h-0.5 w-full bg-white/10 rounded-full overflow-hidden relative;
-  }
-
-  .service-progress-fill {
-    @apply absolute top-0 left-0 h-full bg-brand-accent;
-  }
-
-
 }
 
 @layer utilities {
-  .cursor::after {
-    content: '|';
-    @apply animate-[blink_1s_step-start_infinite] text-white;
-  }
-
-  @keyframes blink { 50% { opacity: 0; } }
-
   /* Minimalist scrollbar */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: #09090b; }

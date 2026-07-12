@@ -1,0 +1,155 @@
+{
+  "version": "5.0",
+  "project_type": "brownfield",
+  "product_repo": {
+    "url": "https://github.com/piztanza/logia-page.git",
+    "local_checkout": "product",
+    "default_branch": "prod",
+    "last_pr": null
+  },
+  "pending_reconcile": [],
+  "changes": [],
+  "onboarding": {
+    "stage1": "confirmed",
+    "stage2": "drafted",
+    "stage3": "confirmed",
+    "business_context": "confirmed",
+    "assessment": "recorded",
+    "strategy": "confirmed",
+    "feature_review": [
+      {
+        "key": "Lead Capture Contact Form",
+        "status": "confirmed",
+        "note": "Primary conversion mechanism — load-bearing."
+      },
+      {
+        "key": "Site Navigation & Section Anchors",
+        "status": "confirmed"
+      },
+      {
+        "key": "Hero Landing & Value Proposition",
+        "status": "confirmed"
+      },
+      {
+        "key": "Cinematic Loading Screen",
+        "status": "confirmed"
+      },
+      {
+        "key": "Services Scroll-Frame Animation",
+        "status": "confirmed"
+      },
+      {
+        "key": "Methodology Scroll Experience",
+        "status": "confirmed"
+      },
+      {
+        "key": "Proprietary Product Showcase",
+        "status": "confirmed"
+      },
+      {
+        "key": "SEO & Social Metadata",
+        "status": "confirmed"
+      },
+      {
+        "key": "Error Boundary Fallback",
+        "status": "confirmed"
+      },
+      {
+        "key": "About / Innovation DNA Section",
+        "status": "confirmed"
+      },
+      {
+        "key": "Market Reach Section",
+        "status": "confirmed"
+      },
+      {
+        "key": "Footer & Newsletter Field",
+        "status": "flagged",
+        "note": "Newsletter email input is non-functional (no submit handler); footer Products/legal links are '#' placeholders. Needs product decision: wire up or remove."
+      }
+    ]
+  },
+  "id_registry": {
+    "stakeholders": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "features": {
+      "must": [
+        "F-001",
+        "F-002",
+        "F-003"
+      ],
+      "should": [
+        "F-004",
+        "F-005",
+        "F-006",
+        "F-007",
+        "F-008",
+        "F-009"
+      ],
+      "could": [
+        "F-010",
+        "F-011",
+        "F-012"
+      ],
+      "wont": []
+    },
+    "roles": [
+      null
+    ],
+    "screens": [
+      "S-001",
+      "S-002",
+      "S-003",
+      "S-004",
+      "S-005",
+      "S-006",
+      "S-007",
+      "S-008",
+      "S-009",
+      "S-010"
+    ],
+    "flows": [
+      "UF-001",
+      "UF-002",
+      "UF-003",
+      "UF-004",
+      "UF-005"
+    ],
+    "components": [
+      "C-001",
+      "C-002",
+      "C-003",
+      "C-004",
+      "C-005",
+      "C-006",
+      "C-007"
+    ],
+    "metrics": [
+      "M-001",
+      "M-002",
+      "M-003",
+      "M-004"
+    ],
+    "assets": [],
+    "integrations": [
+      "INT-001",
+      "INT-002",
+      "INT-003"
+    ]
+  },
+  "next_id": {
+    "feature": 13,
+    "feature_wont": 1,
+    "screen": 11,
+    "flow": 6,
+    "component": 8,
+    "metric": 5,
+    "asset": 1,
+    "change": 1,
+    "integration": 4
+  }
+}

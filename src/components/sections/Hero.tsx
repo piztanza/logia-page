@@ -1,6 +1,22 @@
 import React, { memo, useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
+import { EASE_CINEMATIC } from '../../lib/animation';
+
+type HeroNavLink = {
+  readonly label: string;
+  readonly href: string;
+};
+
+// Bottom-nav pill destinations. Hrefs are explicit (previously derived inline
+// via `label.toLowerCase().replace(' ', '-')`, which only replaced the first
+// space) so the section stays presentational over a typed model.
+const HERO_NAV_LINKS: readonly HeroNavLink[] = [
+  { label: 'Enterprise', href: '#enterprise' },
+  { label: 'AI Audit', href: '#ai-audit' },
+  { label: 'SaaS', href: '#saas' },
+  { label: 'Consulting', href: '#consulting' },
+];
 
 export const Hero: React.FC = memo(() => {
   const shouldReduceMotion = useReducedMotion();
@@ -22,24 +38,24 @@ export const Hero: React.FC = memo(() => {
     animate: { 
       opacity: 1, 
       y: 0,
-      transition: { 
-        duration: 1, 
-        ease: [0.16, 1, 0.3, 1] as any, 
-        delay: 0.3 
-      } 
+      transition: {
+        duration: 1,
+        ease: EASE_CINEMATIC,
+        delay: 0.3
+      }
     }
   };
 
   const textVariants = {
     initial: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       y: 0,
-      transition: { 
-        duration: 1, 
-        ease: [0.16, 1, 0.3, 1] as any, 
-        delay: 0.55 
-      } 
+      transition: {
+        duration: 1,
+        ease: EASE_CINEMATIC,
+        delay: 0.55
+      }
     }
   };
 
@@ -98,22 +114,22 @@ export const Hero: React.FC = memo(() => {
         style={{ opacity }}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1, delay: 1.2, ease: EASE_CINEMATIC }}
         className="absolute bottom-[28px] left-1/2 transform -translate-x-1/2 hidden lg:flex z-20"
       >
         <div className="hero-bottom-nav flex items-center justify-center space-x-10 px-8 py-3 rounded-full bg-brand-bg/40 backdrop-blur-xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
-          {['Enterprise', 'AI Audit', 'SaaS', 'Consulting'].map((item, index) => (
-            <motion.a 
-              key={item}
-              href={`#${item.toLowerCase().replace(' ', '-')}`} 
+          {HERO_NAV_LINKS.map((link, index) => (
+            <motion.a
+              key={link.label}
+              href={link.href}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.4 + index * 0.1 }}
               className="group relative flex items-center justify-center transition-all duration-300"
-              aria-label={`Navigate to ${item} section`}
+              aria-label={`Navigate to ${link.label} section`}
             >
               <span className="relative z-10 text-[11px] font-semibold tracking-[0.15em] pl-[0.15em] text-white/50 group-hover:text-white uppercase transition-colors duration-300">
-                {item}
+                {link.label}
               </span>
               
               {/* Active/Hover Scanline */}

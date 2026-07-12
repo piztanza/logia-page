@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "stakeholders": [
+    {
+      "name": "Enterprise Technology Buyer",
+      "role": "Decision-maker at a mid-to-large enterprise evaluating GRC audit, custom development, or architecture consulting partners.",
+      "interest": "Needs credible proof of capability and an easy way to start a conversation."
+    },
+    {
+      "name": "SMB / SaaS Founder",
+      "role": "Owner or technical lead at a small-to-medium business or SaaS startup.",
+      "interest": "Wants an accessible, trustworthy delivery partner and a low-friction contact path."
+    },
+    {
+      "name": "Logia Growth & BA Team",
+      "role": "Internal team that receives and qualifies inbound inquiries.",
+      "interest": "Wants qualified, well-structured leads (focus area, company, contact details) delivered reliably."
+    },
+    {
+      "name": "Site Visitor",
+      "role": "Anonymous prospective visitor browsing the marketing site.",
+      "interest": "Wants to quickly grasp the value proposition and offerings."
+    }
+  ]
+}

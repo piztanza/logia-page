@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "metrics": [
+    {
+      "name": "Contact form submission conversion rate (unique visitors who submit a qualified inquiry)",
+      "target": ">= 3% of unique visitors",
+      "id": "M-001"
+    },
+    {
+      "name": "Qualified inbound leads captured per month via the contact form",
+      "target": ">= 20 per month",
+      "id": "M-002"
+    },
+    {
+      "name": "Bounce rate on the landing page",
+      "target": "<= 45%",
+      "id": "M-003"
+    },
+    {
+      "name": "Median time-to-interactive / perceived load (loading screen dismissal)",
+      "target": "<= 3 seconds on broadband",
+      "id": "M-004"
+    }
+  ]
+}

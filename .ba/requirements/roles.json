@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "note": "No authentication, login, session, or authorization code exists anywhere in product/ — this is a fully public marketing site. The only actor is an anonymous visitor. 'Visitor' is used as roles_allowed on every feature in the features draft. Any additional roles (e.g. an internal admin who receives the emailed leads) live outside this codebase and are not evidenced here.",
+  "roles": [
+    {
+      "name": "Visitor",
+      "note": "Anonymous, unauthenticated public user. Can browse all sections and submit the contact form / open the WhatsApp chat. No accounts, permissions, or gated content exist in the code."
+    }
+  ]
+}

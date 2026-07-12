@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "note": "Non-functional requirements inferred from observable behaviour and configuration in product/. These describe what the code currently does, not necessarily formal targets the business committed to — confirm/adjust with the human.",
+  "requirements": [
+    {
+      "category": "Performance",
+      "requirement": "Scroll handlers gate React state updates behind requestAnimationFrame (e.g. the navbar scroll listener), so scroll-driven UI reconciles at most once per rendered frame rather than on every scroll pixel.",
+      "note": "Observed in Navbar.tsx; the Services/Methodology canvases are also scroll-driven and animate on rAF."
+    },
+    {
+      "category": "Performance",
+      "requirement": "The Services 86-frame image sequence loads the first frame immediately to unblock the UI and lazy-loads the remaining frames in background batches, and only signals asset-readiness (to dismiss the loading overlay) once ready.",
+      "note": "Inferred from the Services scroll-frame feature and App's isAssetsReady gating."
+    },
+    {
+      "category": "Caching",
+      "requirement": "Production nginx caches Vite hashed /assets/ for 1 year as public, immutable, and the /frames/ Services sequence for 30 days; all non-asset routes fall back to index.html (SPA routing).",
+      "note": "Defined in product/nginx.conf."
+    },
+    {
+      "category": "Accessibility",
+      "requirement": "Animations and motion respect the user's prefers-reduced-motion setting (motion intensity is reduced), and interactive/icon elements carry aria labels / aria-hidden where appropriate.",
+      "note": "prefers-reduced-motion / aria usage observed across Hero and multiple section/layout components; depth of coverage not exhaustively audited."
+    },
+    {
+      "category": "Validation",
+      "requirement": "The contact form validates client-side only: Contact Person, Company and Business Email are required and email must match a basic pattern; there is no server-side validation in this codebase (submission is handed to the Web3Forms third party).",
+      "note": "Observed in Contact.tsx validate(); message is capped at 300 chars via maxLength."
+    },
+    {
+      "category": "Reliability",
+      "requirement": "A top-level React error boundary catches render-time errors and shows a branded recovery screen with a reload action instead of a blank page.",
+      "note": "ErrorBoundary wraps App in main.tsx."
+    },
+    {
+      "category": "Observability",
+      "requirement": "Error diagnostics are limited to console logging (the ErrorBoundary logs caught errors to the console); there is no external error-tracking, analytics, or logging service wired up.",
+      "note": "No Sentry/analytics/logging integration found in the code."
+    },
+    {
+      "category": "SEO",
+      "requirement": "The document head is populated with title, description, keywords, Open Graph, and Twitter card metadata via react-helmet-async, with sensible defaults and prerender-friendly SPA fallback.",
+      "note": "Observed in SEO.tsx; note the site is a client-rendered SPA, so crawler coverage depends on the crawler executing JS."
+    },
+    {
+      "category": "Security",
+      "requirement": "The Web3Forms access_key is embedded as a client-side string literal and the WhatsApp number is hard-coded; there are no server secrets in the app runtime. External links use rel=\"noopener noreferrer\".",
+      "note": "The exposed Web3Forms key is inherent to its client-side form-to-email model but is worth confirming with the human; see also the integrations draft."
+    }
+  ]
+}

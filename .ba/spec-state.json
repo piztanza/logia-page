@@ -10,7 +10,7 @@
   "pending_reconcile": [],
   "changes": [],
   "onboarding": {
-    "stage1": "drafted",
+    "stage1": "confirmed",
     "stage2": "pending",
     "stage3": "drafted",
     "business_context": "confirmed",
@@ -108,7 +108,11 @@
       "M-004"
     ],
     "assets": [],
-    "integrations": []
+    "integrations": [
+      "INT-001",
+      "INT-002",
+      "INT-003"
+    ]
   },
   "next_id": {
     "feature": 13,
@@ -119,6 +123,6 @@
     "metric": 5,
     "asset": 1,
     "change": 1,
-    "integration": 1
+    "integration": 4
   }
 }

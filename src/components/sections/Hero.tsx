@@ -1,6 +1,7 @@
 import React, { memo, useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
+import { EASE_CINEMATIC } from '../../lib/animation';
 
 export const Hero: React.FC = memo(() => {
   const shouldReduceMotion = useReducedMotion();
@@ -22,24 +23,24 @@ export const Hero: React.FC = memo(() => {
     animate: { 
       opacity: 1, 
       y: 0,
-      transition: { 
-        duration: 1, 
-        ease: [0.16, 1, 0.3, 1] as any, 
-        delay: 0.3 
-      } 
+      transition: {
+        duration: 1,
+        ease: EASE_CINEMATIC,
+        delay: 0.3
+      }
     }
   };
 
   const textVariants = {
     initial: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       y: 0,
-      transition: { 
-        duration: 1, 
-        ease: [0.16, 1, 0.3, 1] as any, 
-        delay: 0.55 
-      } 
+      transition: {
+        duration: 1,
+        ease: EASE_CINEMATIC,
+        delay: 0.55
+      }
     }
   };
 
@@ -98,7 +99,7 @@ export const Hero: React.FC = memo(() => {
         style={{ opacity }}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1, delay: 1.2, ease: EASE_CINEMATIC }}
         className="absolute bottom-[28px] left-1/2 transform -translate-x-1/2 hidden lg:flex z-20"
       >
         <div className="hero-bottom-nav flex items-center justify-center space-x-10 px-8 py-3 rounded-full bg-brand-bg/40 backdrop-blur-xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.2)]">

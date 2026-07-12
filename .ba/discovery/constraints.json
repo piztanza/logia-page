@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "constraints": [
+    {
+      "type": "technical",
+      "description": "Static single-page front end (React + Vite + TypeScript, Tailwind) served as static assets via nginx/Docker; no application backend server is maintained."
+    },
+    {
+      "type": "technical",
+      "description": "Contact form submissions are delivered through a third-party form-to-email service (Web3Forms); there is no owned database or server-side storage of leads."
+    },
+    {
+      "type": "security",
+      "description": "No real secret values may be committed. Third-party keys must be referenced by environment-variable name only, and must not be hard-coded in source."
+    },
+    {
+      "type": "performance",
+      "description": "The experience is animation-heavy (video hero, scroll-scrubbed canvas sequences, particle canvases) and must remain smooth and honor prefers-reduced-motion."
+    },
+    {
+      "type": "business",
+      "description": "Branding and cinematic look-and-feel must be preserved; the site is the primary top-of-funnel asset for the Logia Initiative."
+    }
+  ]
+}

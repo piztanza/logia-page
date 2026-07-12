@@ -15,7 +15,7 @@
     "stage3": "confirmed",
     "business_context": "confirmed",
     "assessment": "recorded",
-    "strategy": "pending",
+    "strategy": "confirmed",
     "feature_review": [
       {
         "key": "Lead Capture Contact Form",

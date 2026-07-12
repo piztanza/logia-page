@@ -4,7 +4,7 @@
   "assessment_ref": "product/.ba/analysis/code-assessment.json",
   "overall_verdict": "needs_improvement",
   "decision": "refactor",
-  "strategy_ref": null,
-  "status": "recorded",
-  "decided_at": null
+  "strategy_ref": "product/.ba/analysis/refactor-strategy.json",
+  "status": "proposed",
+  "decided_at": "2026-07-12T21:19:02.192Z"
 }

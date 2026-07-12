@@ -1,0 +1,223 @@
+{
+  "version": "1.0",
+  "created_at": "2026-07-13T04:28:00Z",
+  "assessment_ref": ".ba/analysis/code-assessment.json",
+  "note": "Recommendations only — nothing here has been applied. Priorities are conditioned on the confirmed business intent: protect the lead-capture channel and its metrics (conversion, qualified leads, bounce, time-to-interactive) and honor the stated static-SPA / no-committed-secrets / prefers-reduced-motion constraints. Leave id allocation to the engine at confirmation.",
+  "items": [
+    {
+      "id": "RF-001",
+      "priority": "high",
+      "addresses": [
+        "CA-005",
+        "CA-018"
+      ],
+      "change": "Move the Web3Forms access key out of source: reference it via a build-time env variable (e.g. import.meta.env.VITE_WEB3FORMS_KEY) read in Contact.tsx, add VITE_WEB3FORMS_KEY to .env.example by name only, and drop the unused GEMINI_API_KEY/APP_URL entries.",
+      "why": "Resolves the direct constraint violation (no hard-coded keys) and removes a scrapable key on the primary lead endpoint. Also corrects the misleading env documentation so onboarding references the key the app actually uses.",
+      "risk": "Low — build must inject the env var or the form will submit with an undefined key; requires a documented deploy-time env step for the static build.",
+      "effort": "low",
+      "target_files": [
+        "src/components/sections/Contact.tsx",
+        ".env.example"
+      ],
+      "scope": "localized",
+      "user_decision": null
+    },
+    {
+      "id": "RF-002",
+      "priority": "high",
+      "addresses": [
+        "CA-009"
+      ],
+      "change": "Honor prefers-reduced-motion across every heavy animation: gate the Services frame-scrub, the Methodology particle/nebula rAF loop, and the LoadingScreen breathing loop on a shared reduced-motion check (motion's useReducedMotion or a small useReducedMotion hook), pause/skip the autoplay hero video, and add an @media (prefers-reduced-motion: reduce) fallback in index.css.",
+      "why": "Satisfies the explicit prefers-reduced-motion constraint and WCAG 2.3.3, and cuts CPU/GPU/battery cost for opted-out users, which can reduce bounce on low-end devices.",
+      "risk": "Medium — must degrade gracefully (static first frame / paused canvas / poster still) without breaking the cinematic look for users who allow motion; touching multiple animation surfaces.",
+      "effort": "medium",
+      "target_files": [
+        "src/components/ui/LoadingScreen.tsx",
+        "src/components/sections/Services.tsx",
+        "src/components/sections/Methodology.tsx",
+        "src/components/sections/Hero.tsx",
+        "src/index.css"
+      ],
+      "scope": "cross_cutting",
+      "user_decision": null
+    },
+    {
+      "id": "RF-003",
+      "priority": "high",
+      "addresses": [
+        "CA-006"
+      ],
+      "change": "Add anti-automation to the lead form: include the Web3Forms honeypot ('botcheck') hidden field and optionally an hCaptcha, and reject/ignore submissions that trip it.",
+      "why": "Protects lead quality and Web3Forms quota — the qualified-inbound-leads metric — from bot spam with near-zero friction for real users.",
+      "risk": "Low — honeypot is invisible and low-risk; adding a visible captcha would add minor friction and should be a conscious conversion trade-off.",
+      "effort": "low",
+      "target_files": [
+        "src/components/sections/Contact.tsx"
+      ],
+      "scope": "localized",
+      "user_decision": null
+    },
+    {
+      "id": "RF-004",
+      "priority": "medium",
+      "addresses": [
+        "CA-010",
+        "CA-001"
+      ],
+      "change": "Tie loading-screen dismissal to genuine readiness instead of an artificial floor: reduce or remove the hard 2.5s minimum, and hoist the readiness signal so the loading state is not implicitly owned by the Services section's onReady (e.g. a small app-level asset-readiness context or an explicit, documented readiness contract).",
+      "why": "Directly improves the time-to-interactive / loading-dismissal success metric and decouples global loading UX from one deep child section, reducing architectural fragility.",
+      "risk": "Medium — shortening the floor may expose a visible flash if real assets are slow; the readiness refactor changes a coordination contract and needs care to avoid regressions in the load sequence.",
+      "effort": "medium",
+      "target_files": [
+        "src/App.tsx",
+        "src/components/sections/Services.tsx",
+        "src/components/ui/LoadingScreen.tsx"
+      ],
+      "scope": "cross_cutting",
+      "user_decision": null
+    },
+    {
+      "id": "RF-005",
+      "priority": "medium",
+      "addresses": [
+        "CA-016"
+      ],
+      "change": "Fix or remove dead navigation targets: point the Hero bottom-nav pill at real section ids (or map its labels to existing anchors), give the Footer 'Products' links and the second product button real destinations, and either implement or hide the '#' legal (Privacy/Terms/Cookies) links.",
+      "why": "Broken navigation on the top-of-funnel asset erodes trust and interrupts the path to the contact section, hurting conversion and bounce rate.",
+      "risk": "Low — mostly href corrections; legal links may require real pages/content, which is a product decision.",
+      "effort": "medium",
+      "target_files": [
+        "src/components/sections/Hero.tsx",
+        "src/components/layout/Footer.tsx",
+        "src/data/products.ts"
+      ],
+      "scope": "cross_cutting",
+      "user_decision": null
+    },
+    {
+      "id": "RF-006",
+      "priority": "medium",
+      "addresses": [
+        "CA-014",
+        "CA-015"
+      ],
+      "change": "Stand up a test runner (e.g. Vitest + React Testing Library) with a `test` script, and cover the contact-form path first: email-regex validation, required-field gating, and the success / validation-error / network-error branches of handleSubmit (mocking the Web3Forms fetch).",
+      "why": "Gives regression protection to the conversion-critical flow that is the site's whole purpose, catching lead-capture breakage before deploy.",
+      "risk": "Low — additive tooling and tests; no runtime behavior change. Adds dev dependencies and CI time.",
+      "effort": "medium",
+      "target_files": [
+        "package.json",
+        "vite.config.ts",
+        "src/components/sections/Contact.tsx",
+        "src/components/sections/__tests__/Contact.test.tsx"
+      ],
+      "scope": "cross_cutting",
+      "user_decision": null
+    },
+    {
+      "id": "RF-007",
+      "priority": "medium",
+      "addresses": [
+        "CA-017"
+      ],
+      "change": "Make the footer newsletter field real or remove it: wire the input/submit to an actual subscription endpoint (Web3Forms or a mailing provider) with state and feedback, or delete the non-functional control.",
+      "why": "A visibly interactive control that does nothing undermines credibility on the primary marketing asset.",
+      "risk": "Low — if wired, needs an endpoint decision; if removed, purely cosmetic.",
+      "effort": "low",
+      "target_files": [
+        "src/components/layout/Footer.tsx"
+      ],
+      "scope": "localized",
+      "user_decision": null
+    },
+    {
+      "id": "RF-008",
+      "priority": "low",
+      "addresses": [
+        "CA-002",
+        "CA-003"
+      ],
+      "change": "Remove dead code and leftover scaffolding: delete the unused Products.tsx placeholder, GlassCard.tsx, and the empty navigation.ts, and drop the unused process.env.GEMINI_API_KEY define from vite.config.ts (unless Gemini integration is genuinely planned).",
+      "why": "Reduces cognitive load, prevents accidental use of the wrong component, and removes a secret-named build injection that serves no current purpose.",
+      "risk": "Low — verify nothing imports these before deletion; confirm with the team that Gemini is not imminent.",
+      "effort": "low",
+      "target_files": [
+        "src/components/sections/Products.tsx",
+        "src/components/ui/GlassCard.tsx",
+        "src/data/navigation.ts",
+        "vite.config.ts"
+      ],
+      "scope": "cross_cutting",
+      "user_decision": null
+    },
+    {
+      "id": "RF-009",
+      "priority": "low",
+      "addresses": [
+        "CA-007"
+      ],
+      "change": "Add baseline security headers to nginx.conf: Content-Security-Policy (allowing self, Google Fonts, Web3Forms, and the image hosts used), X-Content-Type-Options: nosniff, Referrer-Policy, and a minimal Permissions-Policy.",
+      "why": "Cheap defense-in-depth for a public site that loads third-party fonts and posts to a third-party API.",
+      "risk": "Medium — an over-tight CSP can break fonts, the frame sequence, the Web3Forms POST, or remote images; needs testing against the real asset origins.",
+      "effort": "low",
+      "target_files": [
+        "nginx.conf"
+      ],
+      "scope": "localized",
+      "user_decision": null
+    },
+    {
+      "id": "RF-010",
+      "priority": "low",
+      "addresses": [
+        "CA-011"
+      ],
+      "change": "Right-size the Services frame sequence for perceived load and mobile bounce: reduce frame count and/or serve smaller responsive frame dimensions on small screens, and confirm decoded frames are released on unmount (the current cleanup already nulls src — keep that).",
+      "why": "Cuts the early, mobile-heavy network/memory cost that most affects the bounce-rate metric, without losing the cinematic scrub.",
+      "risk": "Medium — fewer frames can make the scrub feel less smooth; requires a visual quality-vs-weight trade-off and re-exporting assets.",
+      "effort": "medium",
+      "target_files": [
+        "src/components/sections/Services.tsx"
+      ],
+      "scope": "localized",
+      "user_decision": null
+    },
+    {
+      "id": "RF-011",
+      "priority": "low",
+      "addresses": [
+        "CA-012",
+        "CA-013"
+      ],
+      "change": "Optimize first-paint assets: trim the Google Fonts request to only the weights actually used, and add a poster (or first-frame still) to the hero <video> so it paints meaningfully before playback.",
+      "why": "Improves LCP / perceived load on the primary above-the-fold asset, supporting the time-to-interactive and bounce metrics.",
+      "risk": "Low — verify no removed font weight is referenced; poster is additive.",
+      "effort": "low",
+      "target_files": [
+        "src/index.css",
+        "index.html",
+        "src/components/sections/Hero.tsx"
+      ],
+      "scope": "cross_cutting",
+      "user_decision": null
+    },
+    {
+      "id": "RF-012",
+      "priority": "low",
+      "addresses": [
+        "CA-004"
+      ],
+      "change": "Extract the ParallaxParticles canvas engine from Methodology.tsx into its own module (e.g. components/ui/ParallaxParticles.tsx) so the section component and the reusable engine are independently readable and testable.",
+      "why": "Separates two concerns fused in one large file, improving maintainability of the animation engine.",
+      "risk": "Low — pure move/import refactor.",
+      "effort": "low",
+      "target_files": [
+        "src/components/sections/Methodology.tsx",
+        "src/components/ui/ParallaxParticles.tsx"
+      ],
+      "scope": "localized",
+      "user_decision": null
+    }
+  ]
+}

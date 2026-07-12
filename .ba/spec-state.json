@@ -11,10 +11,10 @@
   "changes": [],
   "onboarding": {
     "stage1": "confirmed",
-    "stage2": "pending",
+    "stage2": "drafted",
     "stage3": "confirmed",
     "business_context": "confirmed",
-    "assessment": "pending",
+    "assessment": "recorded",
     "strategy": "pending",
     "feature_review": [
       {

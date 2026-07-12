@@ -1,0 +1,170 @@
+{
+  "version": "1.0",
+  "created_at": "2026-07-13T04:24:00Z",
+  "rubric_ref": ".ba/analysis/rubric.json",
+  "summary": "A cleanly structured, well-commented static React/Vite marketing SPA with genuinely strong animation-performance engineering in places (rAF-gated scroll, offscreen-suspended particle canvas, batched frame preloading). The intent-relevant gaps cluster in security and the conversion funnel: the Web3Forms key is hard-coded (a direct constraint violation), the lead form has no spam protection, heavy animations ignore prefers-reduced-motion, an artificial 2.5s floor inflates perceived load, several primary-funnel navigation links are dead, and there are zero automated tests over the conversion-critical form path.",
+  "dimensions": {
+    "architecture": {
+      "verdict": "warn",
+      "score": 78,
+      "findings": [
+        {
+          "id": "CA-001",
+          "severity": "medium",
+          "location": "src/App.tsx:16-43",
+          "issue": "Loading-screen dismissal is coupled to a deep child section's internal readiness: App gates isLoading on isAssetsReady, which is only set when <Services onReady> reports its first frame has loaded.",
+          "rationale": "The top-of-funnel loading experience (a named success metric) depends on the Services frame-sequence pipeline succeeding. If Services is refactored, reordered, or its first-frame load fails, the loading screen's dismissal contract breaks in a non-obvious way. The readiness signal driving global UX lives too deep in the tree."
+        },
+        {
+          "id": "CA-002",
+          "severity": "low",
+          "location": "src/components/sections/Products.tsx, src/components/ui/GlassCard.tsx, src/data/navigation.ts",
+          "issue": "Dead/unused modules ship in the tree: Products.tsx is a literal 'Products Placeholder' (App uses ProductStage instead), GlassCard.tsx is never imported, and navigation.ts exports empty arrays consumed by nothing.",
+          "rationale": "Orphaned modules add cognitive load and invite accidental use of the wrong component; the empty navigation.ts implies a data-driven nav that was never wired."
+        },
+        {
+          "id": "CA-003",
+          "severity": "low",
+          "location": "vite.config.ts:10-12, .env.example",
+          "issue": "The Vite build defines process.env.GEMINI_API_KEY and .env.example documents GEMINI_API_KEY/APP_URL, but no source file reads any of them — leftover AI Studio scaffolding.",
+          "rationale": "Config that injects an unused (and secret-named) variable is misleading and, if a real key were ever placed in it, would be baked into the client bundle. Note: flagged as a proposal for human confirmation since intent may be to add Gemini later."
+        }
+      ]
+    },
+    "readability": {
+      "verdict": "pass",
+      "score": 85,
+      "findings": [
+        {
+          "id": "CA-004",
+          "severity": "low",
+          "location": "src/components/sections/Methodology.tsx:1-365",
+          "issue": "A full parallax particle/nebula canvas engine (ParallaxParticles, ~300 lines) lives in the same file as the Methodology section component.",
+          "rationale": "The engine is a reusable, independently-testable unit; co-locating it with the section makes the module large and mixes two concerns. Comments are excellent, so comprehension is aided, but splitting would improve maintainability."
+        }
+      ]
+    },
+    "security": {
+      "verdict": "fail",
+      "score": 52,
+      "findings": [
+        {
+          "id": "CA-005",
+          "severity": "high",
+          "location": "src/components/sections/Contact.tsx:70",
+          "issue": "The Web3Forms access_key ('7d755ee3-...') is hard-coded as a string literal in source and committed to the repo.",
+          "rationale": "Directly violates the stated constraint: 'Third-party keys must be referenced by environment-variable name only, and must not be hard-coded in source.' Beyond the constraint, a committed key on the primary lead endpoint can be scraped and abused to exhaust quota or spam the team's inbox, degrading the qualified-lead channel that is the core success metric."
+        },
+        {
+          "id": "CA-006",
+          "severity": "medium",
+          "location": "src/components/sections/Contact.tsx:57-92",
+          "issue": "The lead-capture form posts to Web3Forms with no anti-automation: no honeypot/botcheck field and no captcha.",
+          "rationale": "Qualified inbound leads captured per month is a primary success metric; an unprotected public endpoint invites bot spam that pollutes lead quality and can burn the Web3Forms quota. Web3Forms supports a zero-friction honeypot ('botcheck') and hCaptcha for exactly this."
+        },
+        {
+          "id": "CA-007",
+          "severity": "low",
+          "location": "nginx.conf",
+          "issue": "The static host sets no baseline security headers (no Content-Security-Policy, X-Content-Type-Options, Referrer-Policy, or Permissions-Policy).",
+          "rationale": "For a public marketing site that loads third-party fonts and posts to a third-party API, baseline headers are cheap defense-in-depth against MIME-sniffing and content injection. Low severity given no owned backend or auth surface."
+        },
+        {
+          "id": "CA-008",
+          "severity": "low",
+          "location": "src/components/sections/Contact.tsx:48-55",
+          "issue": "Form validation is client-side only (a regex email check plus required-field checks); there is no authoritative server-side validation the team controls.",
+          "rationale": "Acceptable for a static site delegating to Web3Forms, but worth noting: the regex is permissive and the only gate before submission, so it should not be relied on for data quality. Pairs with the lack of spam protection (CA-006)."
+        }
+      ]
+    },
+    "performance": {
+      "verdict": "warn",
+      "score": 66,
+      "findings": [
+        {
+          "id": "CA-009",
+          "severity": "high",
+          "location": "src/components/ui/LoadingScreen.tsx:63-73, src/components/sections/Services.tsx (frame animation), src/components/sections/Methodology.tsx:238-333 (particle rAF loop), src/components/sections/Hero.tsx:53-62 (autoplay video), src/index.css",
+          "issue": "prefers-reduced-motion is honored only in Hero.tsx (useReducedMotion). The scroll-scrubbed Services canvas sequence, the continuous Methodology particle/nebula rAF loop, the LoadingScreen infinite 'breathing' opacity loop, and the autoplaying background video do not degrade under reduced-motion, and index.css has no @media (prefers-reduced-motion) rule.",
+          "rationale": "Directly violates the explicit constraint that the animation-heavy experience 'must ... honor prefers-reduced-motion,' and fails WCAG 2.3.3. It also drives CPU/GPU/battery cost on low-end devices for users who opted out, which can worsen bounce."
+        },
+        {
+          "id": "CA-010",
+          "severity": "medium",
+          "location": "src/App.tsx:20-27",
+          "issue": "An artificial 2.5s minimum is imposed on the loading screen (minTimeElapsed); the site cannot become interactive before 2.5s even when assets are ready sooner.",
+          "rationale": "Median time-to-interactive / loading-screen dismissal is a named success metric. A hard floor deliberately inflates it. The cinematic intent is legitimate, so this is a tuning trade-off flagged for human decision rather than a clear defect."
+        },
+        {
+          "id": "CA-011",
+          "severity": "medium",
+          "location": "src/components/sections/Services.tsx:23-103",
+          "issue": "The Services section preloads an 86-frame .webp sequence (the code comments estimate ~17MB of decoded frame data) and retains the Image objects for scrubbing.",
+          "rationale": "Even with the good critical-first-frame + batched lazy-load strategy, this is a substantial network and memory cost that lands early in the scroll and disproportionately affects mobile users — the segment most likely to bounce. Worth right-sizing (fewer frames / responsive sources) for the bounce-rate metric."
+        },
+        {
+          "id": "CA-012",
+          "severity": "low",
+          "location": "src/index.css:1, index.html:11-13",
+          "issue": "Three Google Font families are imported with wide weight ranges (Playfair Display 400..900 italic+roman variable, Plus Jakarta Sans 6 weights, JetBrains Mono 2 weights).",
+          "rationale": "preconnect and display=swap are correctly in place (good), but the total font payload is heavy for a first-paint-sensitive landing page; trimming to the weights actually used would help LCP/perceived load."
+        },
+        {
+          "id": "CA-013",
+          "severity": "low",
+          "location": "src/components/sections/Hero.tsx:53-62",
+          "issue": "The hero <video> has no poster image; before metadata/first frame paints, the hero background is empty (brand-bg only).",
+          "rationale": "A poster (or a first-frame still) would give an immediate meaningful paint for the primary above-the-fold asset, improving perceived load."
+        }
+      ]
+    },
+    "test_coverage": {
+      "verdict": "fail",
+      "score": 12,
+      "findings": [
+        {
+          "id": "CA-014",
+          "severity": "high",
+          "location": "package.json:6-12 (no test script), repo-wide",
+          "issue": "There are no automated tests anywhere in the repository and no test runner configured; the 'lint' script is only `tsc --noEmit`.",
+          "rationale": "The conversion funnel — the reason the site exists — has zero regression protection. Any change to the contact flow, validation, or navigation can silently break lead capture, the primary success metric."
+        },
+        {
+          "id": "CA-015",
+          "severity": "medium",
+          "location": "src/components/sections/Contact.tsx:48-92",
+          "issue": "The business-critical contact-form logic (email-regex validation, required-field gating, success/validation-error/network-error branches of handleSubmit) is entirely untested.",
+          "rationale": "This is exactly the code whose failure most directly costs qualified leads; it is pure, injectable, and cheap to cover with unit/component tests, so the absence of coverage here is the highest-value gap to close."
+        }
+      ]
+    },
+    "conventions": {
+      "verdict": "warn",
+      "score": 72,
+      "findings": [
+        {
+          "id": "CA-016",
+          "severity": "medium",
+          "location": "src/components/sections/Hero.tsx:105-121, src/components/layout/Footer.tsx:48-56 & 107-109, src/data/products.ts:47",
+          "issue": "Multiple primary-funnel links are dead ends: the Hero bottom-nav pill links to #enterprise/#ai-audit/#saas/#consulting (no section has those ids), the Footer 'Products' column links and the legal (Privacy/Terms/Cookies) links are all href='#', and the second product's button url is '#'.",
+          "rationale": "Broken navigation on the top-of-funnel asset erodes visitor trust and interrupts the path to the contact section, working against conversion and bounce-rate goals. Note: some (e.g. legal links) may be intentionally deferred — flagged for human confirmation."
+        },
+        {
+          "id": "CA-017",
+          "severity": "low",
+          "location": "src/components/layout/Footer.tsx:83-96",
+          "issue": "The footer newsletter email input and submit button render but have no onChange/onSubmit handler — the field is non-functional UI.",
+          "rationale": "A visibly interactive control that does nothing (already flagged in Stage 1) undermines credibility on the primary marketing asset; it should either be wired to a real subscription flow or removed."
+        },
+        {
+          "id": "CA-018",
+          "severity": "low",
+          "location": ".env.example",
+          "issue": ".env.example documents only GEMINI_API_KEY and APP_URL — neither of which the app uses — and documents no variable for the one third-party key the app actually needs (Web3Forms).",
+          "rationale": "Misleading environment docs make onboarding harder and reinforce the hard-coded-key anti-pattern (CA-005); the example should reference the Web3Forms key by name and drop the unused AI Studio variables."
+        }
+      ]
+    }
+  }
+}

@@ -12,7 +12,7 @@
   "onboarding": {
     "stage1": "drafted",
     "stage2": "pending",
-    "stage3": "pending",
+    "stage3": "drafted",
     "business_context": "pending",
     "assessment": "pending",
     "strategy": "pending",
@@ -47,7 +47,7 @@
       },
       {
         "key": "SEO & Social Metadata",
-        "status": "pending"
+        "status": "confirmed"
       },
       {
         "key": "Error Boundary Fallback",
@@ -68,7 +68,12 @@
     ]
   },
   "id_registry": {
-    "stakeholders": [],
+    "stakeholders": [
+      null,
+      null,
+      null,
+      null
+    ],
     "features": {
       "must": [],
       "should": [],
@@ -79,7 +84,12 @@
     "screens": [],
     "flows": [],
     "components": [],
-    "metrics": [],
+    "metrics": [
+      "M-001",
+      "M-002",
+      "M-003",
+      "M-004"
+    ],
     "assets": [],
     "integrations": []
   },
@@ -89,7 +99,7 @@
     "screen": 1,
     "flow": 1,
     "component": 1,
-    "metric": 1,
+    "metric": 5,
     "asset": 1,
     "change": 1,
     "integration": 1

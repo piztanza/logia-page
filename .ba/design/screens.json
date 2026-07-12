@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "note": "This is a single-page marketing site (no client-side router / react-router). App.tsx renders one continuous page composed of anchored sections; the navbar scrolls between them via in-page #anchors. The 'screens' below are therefore the navigable anchored sections plus two overlay/state screens (loading overlay and error fallback), each of which behaves as a distinct view to the visitor.",
+  "screens": [
+    {
+      "name": "Hero / Landing",
+      "note": "The #top hero view: cinematic looping video background, headline, scroll-driven fade/scale. First thing the visitor sees after the loading overlay.",
+      "id": "S-001"
+    },
+    {
+      "name": "About / Innovation DNA",
+      "note": "#about anchored section presenting the three company pillars.",
+      "id": "S-002"
+    },
+    {
+      "name": "Services",
+      "note": "#services scroll-scrubbed 86-frame canvas animation with Enterprise / Agentic AI text slides; also signals asset readiness to dismiss the loading overlay.",
+      "id": "S-003"
+    },
+    {
+      "name": "Methodology",
+      "note": "#methodology tall sticky section with staged points over a parallax particle/nebula canvas.",
+      "id": "S-004"
+    },
+    {
+      "name": "Products",
+      "note": "#products data-driven product showcase (ProductStage) rendering typed product blocks in an alternating split layout.",
+      "id": "S-005"
+    },
+    {
+      "name": "Market Reach",
+      "note": "#market section contrasting the two target market segments.",
+      "id": "S-006"
+    },
+    {
+      "name": "Contact",
+      "note": "#contact lead-capture form (Web3Forms submit + WhatsApp deep-link) with success/error states.",
+      "id": "S-007"
+    },
+    {
+      "name": "Footer",
+      "note": "Site footer with brand blurb, links, and a (currently non-functional) newsletter field.",
+      "id": "S-008"
+    },
+    {
+      "name": "Loading Overlay",
+      "note": "Full-screen branded loading screen shown until assets are ready AND a minimum 2.5s has elapsed; not URL-addressable, an overlay state.",
+      "id": "S-009"
+    },
+    {
+      "name": "Error Fallback",
+      "note": "Branded 'System Interruption' screen rendered by the top-level ErrorBoundary when a render error is thrown, with a 'Restart Protocols' reload button.",
+      "id": "S-010"
+    }
+  ]
+}

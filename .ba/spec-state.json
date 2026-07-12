@@ -110,7 +110,13 @@
       "S-009",
       "S-010"
     ],
-    "flows": [],
+    "flows": [
+      "UF-001",
+      "UF-002",
+      "UF-003",
+      "UF-004",
+      "UF-005"
+    ],
     "components": [
       "C-001",
       "C-002",
@@ -137,7 +143,7 @@
     "feature": 13,
     "feature_wont": 1,
     "screen": 11,
-    "flow": 1,
+    "flow": 6,
     "component": 8,
     "metric": 5,
     "asset": 1,

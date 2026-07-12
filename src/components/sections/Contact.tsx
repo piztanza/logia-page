@@ -1,7 +1,7 @@
-/// <reference types="vite/client" />
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Globe, Lock, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
+import { getWeb3FormsConfig, whatsAppHref } from '../../config/site';
 
 const WhatsAppIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -9,9 +9,8 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-const WA_HREF = `https://wa.me/6281318732870?text=${encodeURIComponent(
-  "Hello Logia Initiative! I found your website and I'm interested in learning more about your services. I'd love to discuss a potential collaboration."
-)}`;
+// Centralised in src/config/site — the WhatsApp number is no longer hard-coded here.
+const WA_HREF = whatsAppHref();
 
 interface FormData {
   contactPerson: string;
@@ -63,10 +62,10 @@ export const Contact: React.FC = () => {
     setIsLoading(true);
     setSubmitError('');
 
-    // Web3Forms integration config — read from Vite env, never hard-coded in
-    // source. Supplied at build time via VITE_WEB3FORMS_ENDPOINT / VITE_WEB3FORMS_KEY.
-    const endpoint = import.meta.env.VITE_WEB3FORMS_ENDPOINT;
-    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
+    // Web3Forms integration config — read from Vite env via the central site
+    // config, never hard-coded in source. Supplied at build time via
+    // VITE_WEB3FORMS_ENDPOINT / VITE_WEB3FORMS_KEY.
+    const { endpoint, accessKey } = getWeb3FormsConfig();
 
     try {
       const res = await fetch(endpoint, {

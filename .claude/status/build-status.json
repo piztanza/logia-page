@@ -1,0 +1,33 @@
+{
+  "job_kind": "build",
+  "phase": "done",
+  "detail": "Escalated: rubric 'no dead/placeholder links' conflicts with characterization tests that deliberately pin the Hero bottom-nav (#enterprise/#ai-audit/#saas/#consulting) and Footer Products/Legal ('#') placeholder hrefs — resolving/removing them requires editing the behaviour contract, so it routes through ba-change (REFACTOR_BEHAVIOR_CHANGE). The independent, behaviour-preserving architecture standard (single src/config source of truth for external integrations) was applied: added src/config/site.ts and de-hard-coded the WhatsApp number in Contact.tsx. Full suite stayed green-to-green (22/22) and tsc --noEmit is clean. See .claude/status/escalation.md.",
+  "updated_at": "2026-07-13T05:28:00Z",
+  "files_touched": [
+    "src/config/site.ts",
+    "src/components/sections/Contact.tsx"
+  ],
+  "suite": {
+    "passed": 22,
+    "failed": 0,
+    "failing_tests": [],
+    "pre_existing_failures": []
+  },
+  "safety_net": {
+    "generated": 0,
+    "features": []
+  },
+  "result": "escalated",
+  "escalation": {
+    "code": "REFACTOR_BEHAVIOR_CHANGE",
+    "route_to": "ba-change",
+    "doc": ".claude/status/escalation.md",
+    "reason": "Rubric convention 'No dead or placeholder links' conflicts with green characterization tests that pin the current placeholder hrefs in Hero (F-003) and Footer (F-012). Satisfying the rubric would require editing those characterization tests, i.e. an observable behaviour change.",
+    "conflicting_files": [
+      "src/components/sections/Hero.tsx",
+      "src/components/sections/__tests__/Hero.test.tsx",
+      "src/components/layout/Footer.tsx",
+      "src/components/layout/__tests__/Footer.test.tsx"
+    ]
+  }
+}

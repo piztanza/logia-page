@@ -1,0 +1,47 @@
+{
+  "version": "5.0",
+  "project_type": "brownfield",
+  "product_repo": {
+    "url": "https://github.com/piztanza/logia-page.git",
+    "local_checkout": "product",
+    "default_branch": "prod",
+    "last_pr": null
+  },
+  "pending_reconcile": [],
+  "changes": [],
+  "onboarding": {
+    "stage1": "pending",
+    "stage2": "pending",
+    "stage3": "pending",
+    "business_context": "pending",
+    "assessment": "pending",
+    "strategy": "pending"
+  },
+  "id_registry": {
+    "stakeholders": [],
+    "features": {
+      "must": [],
+      "should": [],
+      "could": [],
+      "wont": []
+    },
+    "roles": [],
+    "screens": [],
+    "flows": [],
+    "components": [],
+    "metrics": [],
+    "assets": [],
+    "integrations": []
+  },
+  "next_id": {
+    "feature": 1,
+    "feature_wont": 1,
+    "screen": 1,
+    "flow": 1,
+    "component": 1,
+    "metric": 1,
+    "asset": 1,
+    "change": 1,
+    "integration": 1
+  }
+}

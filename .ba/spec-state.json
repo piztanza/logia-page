@@ -13,7 +13,7 @@
     "stage1": "drafted",
     "stage2": "pending",
     "stage3": "drafted",
-    "business_context": "pending",
+    "business_context": "confirmed",
     "assessment": "pending",
     "strategy": "pending",
     "feature_review": [
@@ -77,9 +77,24 @@
       null
     ],
     "features": {
-      "must": [],
-      "should": [],
-      "could": [],
+      "must": [
+        "F-001",
+        "F-002",
+        "F-003"
+      ],
+      "should": [
+        "F-004",
+        "F-005",
+        "F-006",
+        "F-007",
+        "F-008",
+        "F-009"
+      ],
+      "could": [
+        "F-010",
+        "F-011",
+        "F-012"
+      ],
       "wont": []
     },
     "roles": [],
@@ -96,7 +111,7 @@
     "integrations": []
   },
   "next_id": {
-    "feature": 1,
+    "feature": 13,
     "feature_wont": 1,
     "screen": 1,
     "flow": 1,

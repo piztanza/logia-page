@@ -1,0 +1,223 @@
+{
+  "version": "1.0",
+  "created_at": "2026-07-13T00:10:00Z",
+  "features": {
+    "must_have": [
+      {
+        "title": "Lead Capture Contact Form",
+        "description": "Primary conversion mechanism: a contact/inquiry form that validates input and submits the lead to the Web3Forms email API, with success and error states. Also offers a WhatsApp deep-link as an alternative contact channel.",
+        "acceptance_criteria": [
+          "Contact Person, Company, and Business Email are required; email must match a basic email pattern.",
+          "Phone/WhatsApp and Brief Message are optional; message is capped at 300 characters with a live counter.",
+          "Primary Focus is a select with four preset options (GRC Audit, Custom Dev, Architecture Consulting, SMB/SaaS).",
+          "On submit the form POSTs a JSON payload to https://api.web3forms.com/submit and shows an 'Inquiry Received' confirmation on success.",
+          "On API failure or network error a submit error message is shown and the form remains editable.",
+          "A 'Chat on WhatsApp' link opens a prefilled wa.me conversation in a new tab."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "must",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-001"
+      },
+      {
+        "title": "Site Navigation & Section Anchors",
+        "description": "Fixed top navigation for the single-page site, with a scroll-reactive style change, in-page anchor links to each section, primary call-to-action buttons, and a responsive mobile/tablet menu.",
+        "acceptance_criteria": [
+          "Navbar becomes opaque/blurred with a bottom border after the page is scrolled past ~60px.",
+          "Desktop nav links (About, Services, Methodology, Products, Contact) jump to their in-page anchors.",
+          "Clicking the logo smoothly scrolls to the top of the page.",
+          "On smaller viewports a hamburger toggles a full-width overlay menu that closes on link selection.",
+          "'Initiate Collaboration' and 'Market Reach' CTAs link to the Contact and Market sections."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "must",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-002"
+      },
+      {
+        "title": "Hero Landing & Value Proposition",
+        "description": "Above-the-fold hero introducing the company with a looping cinematic video background, headline/subcopy, and scroll-driven fade/scale transitions.",
+        "acceptance_criteria": [
+          "A muted, looping, autoplaying background video plays inline behind the hero.",
+          "Headline ('Building Software with Agentic AI') and supporting copy animate in on load.",
+          "Hero content fades and scales out as the user scrolls down.",
+          "Motion intensity is reduced when the user prefers reduced motion.",
+          "A desktop bottom navigation pill links to key section anchors."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "must",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-003"
+      }
+    ],
+    "should_have": [
+      {
+        "title": "Cinematic Loading Screen",
+        "description": "Full-screen branded loading overlay gated on both asset readiness and a minimum display time, with a sequential logo-then-background fade-out.",
+        "acceptance_criteria": [
+          "The overlay stays visible until the critical frame asset is ready AND a minimum 2.5s has elapsed.",
+          "The logo pulses (breathing opacity) while loading.",
+          "When loading completes the logo fades first, then the background fades ~600ms later.",
+          "Body scroll is locked while the overlay is visible and released afterward."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "should",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-004"
+      },
+      {
+        "title": "Services Scroll-Frame Animation",
+        "description": "Scroll-scrubbed canvas playback of an 86-frame image sequence for the Services section, synchronized with two swapping text slides (Enterprise / Agentic AI) and a scroll progress bar.",
+        "acceptance_criteria": [
+          "A canvas renders frames from an 86-image webp sequence driven by scroll position within a 200vh sticky section.",
+          "The first frame loads immediately to unblock the UI; remaining frames load lazily in background batches.",
+          "Text content swaps between the Enterprise and AI slides using scroll-threshold hysteresis that survives fast scrolling.",
+          "A progress bar reflects scroll progress through the section.",
+          "Signals asset readiness to the app so the loading screen can dismiss."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "should",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-005"
+      },
+      {
+        "title": "Methodology Scroll Experience",
+        "description": "A tall sticky section presenting the company methodology as staged, cinematically-animated points over a parallax particle/nebula canvas background.",
+        "acceptance_criteria": [
+          "Within a 400vh sticky section the intro title minimizes and four methodology points appear at successive scroll thresholds.",
+          "A canvas renders multi-layer parallax particles and nebula blobs responding to scroll and (on desktop) mouse position.",
+          "The particle render loop pauses when the canvas is scrolled off-screen.",
+          "Methodology point content (index, punchline, narrative, technical tag) is data-driven."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "should",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-006"
+      },
+      {
+        "title": "Proprietary Product Showcase",
+        "description": "Data-driven product showcase that renders each product from a typed block model (heading, text, list, media, button) in an alternating split layout.",
+        "acceptance_criteria": [
+          "Each product renders heading, description, feature list, media image, and a call-to-action button from its block data.",
+          "List item icons are resolved by name from an icon map, falling back to a default icon.",
+          "Cards alternate media/content sides based on their index.",
+          "Product content is sourced from a typed products data model."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "should",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-007"
+      },
+      {
+        "title": "SEO & Social Metadata",
+        "description": "Document head metadata (title, description, keywords) plus Open Graph and Twitter card tags injected via react-helmet-async.",
+        "acceptance_criteria": [
+          "Sets page title, meta description, and keywords with sensible defaults.",
+          "Emits Open Graph (type, url, title, description, image) tags.",
+          "Emits Twitter card (summary_large_image) tags.",
+          "Values are overridable via props."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "should",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-008"
+      },
+      {
+        "title": "Error Boundary Fallback",
+        "description": "React error boundary wrapping the app that catches render-time errors and shows a branded recovery screen instead of a blank page.",
+        "acceptance_criteria": [
+          "A thrown render error is caught and a branded 'System Interruption' fallback is displayed.",
+          "The error is logged to the console for diagnostics.",
+          "A 'Restart Protocols' button reloads the page."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "should",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-009"
+      }
+    ],
+    "could_have": [
+      {
+        "title": "About / Innovation DNA Section",
+        "description": "Static informational section presenting the company's three pillars (Business Analyst, AI Architect Engineer, System Developer) with scroll-parallax card motion.",
+        "acceptance_criteria": [
+          "Displays three pillar cards with tag, title, and descriptive copy.",
+          "Cards animate into view with staggered scroll-linked parallax offsets."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "could",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-010"
+      },
+      {
+        "title": "Market Reach Section",
+        "description": "Static section contrasting the two target market segments (Mid-to-Large Enterprises vs SMB Consulting & SaaS) with imagery and engagement-method tags.",
+        "acceptance_criteria": [
+          "Presents two market-segment cards with heading, description, and engagement-method chips.",
+          "Cards animate in on scroll into view."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "could",
+        "screen_refs": [],
+        "test_status": "none",
+        "id": "F-011"
+      },
+      {
+        "title": "Footer & Newsletter Field",
+        "description": "Site footer with brand blurb, social/contact links, quick navigation columns, and a newsletter email input.",
+        "acceptance_criteria": [
+          "Shows brand info, LinkedIn/GitHub/email/location links, and Products/Company link columns.",
+          "Renders a newsletter email input with a subscribe button."
+        ],
+        "roles_allowed": [
+          "visitor"
+        ],
+        "priority": "could",
+        "screen_refs": [],
+        "test_status": "none",
+        "note": "The newsletter email input has no onSubmit/onClick handler in the code — it is currently non-functional UI, not a working subscription. The 'Products' footer links and legal links (Privacy/Terms/Cookies) point to '#' placeholders.",
+        "id": "F-012"
+      }
+    ],
+    "wont_have": []
+  },
+  "summary": {
+    "total": 12,
+    "must": 3,
+    "should": 6,
+    "could": 3,
+    "wont": 0
+  }
+}

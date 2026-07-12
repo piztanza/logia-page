@@ -5,6 +5,6 @@
   "overall_verdict": "needs_improvement",
   "decision": "refactor",
   "strategy_ref": "product/.ba/analysis/refactor-strategy.json",
-  "status": "proposed",
+  "status": "building",
   "decided_at": "2026-07-12T21:19:02.192Z"
 }

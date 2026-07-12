@@ -59,11 +59,12 @@
       },
       {
         "key": "Market Reach Section",
-        "status": "confirmed"
+        "status": "pending"
       },
       {
         "key": "Footer & Newsletter Field",
-        "status": "pending"
+        "status": "flagged",
+        "note": "Newsletter email input is non-functional (no submit handler); footer Products/legal links are '#' placeholders. Needs product decision: wire up or remove."
       }
     ]
   },

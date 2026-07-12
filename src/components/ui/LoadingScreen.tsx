@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import {
+  LOADING_BG_FADE_SEC,
+  LOADING_BREATHE_OPACITY,
+  LOADING_BREATHE_SEC,
+  LOADING_LOGO_ENTER_SEC,
+  LOADING_LOGO_FADE_MS,
+  LOADING_LOGO_FADE_SEC,
+} from '../../lib/animation';
 
 interface LoadingScreenProps {
   isLoading: boolean;
@@ -30,10 +38,10 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
       // Step 1: Trigger Logo Fade Out
       setInternalLoading(false);
 
-      // Step 2: Wait for logo fade duration (600ms), then trigger BG fade out
+      // Step 2: Wait for the logo fade duration, then trigger BG fade out
       const bgTimer = setTimeout(() => {
         setIsFadingBg(true);
-      }, 600);
+      }, LOADING_LOGO_FADE_MS);
 
       return () => clearTimeout(bgTimer);
     }
@@ -46,7 +54,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
           key="loading-screen"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.0, ease: "easeInOut" }}
+          transition={{ duration: LOADING_BG_FADE_SEC, ease: "easeInOut" }}
           className="fixed inset-0 z-[9999] bg-brand-bg flex items-center justify-center"
         >
           <AnimatePresence>
@@ -55,8 +63,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
                 key="logo-wrapper"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeOut" } }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                exit={{ opacity: 0, transition: { duration: LOADING_LOGO_FADE_SEC, ease: "easeOut" } }}
+                transition={{ duration: LOADING_LOGO_ENTER_SEC, ease: "easeOut" }}
                 className="relative w-24 h-24 flex items-center justify-center"
               >
                 {/* Pure White Logo with Cinematic Breathing (Opacity) */}
@@ -64,11 +72,11 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
                   src="/icon.png"
                   alt="Logia Logo"
                   className="w-full h-full object-contain relative z-10 pointer-events-none"
-                  animate={{ opacity: [0.3, 1, 0.3] }}
-                  transition={{ 
-                    duration: 2.5, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
+                  animate={{ opacity: LOADING_BREATHE_OPACITY }}
+                  transition={{
+                    duration: LOADING_BREATHE_SEC,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                 />
               </motion.div>

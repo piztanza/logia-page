@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import { SEO } from './components/common/SEO';
 import { LoadingScreen } from './components/ui/LoadingScreen';
+import { useAppLoading } from './hooks/useAppLoading';
 
 // Layout & Sections
 import { Navbar } from './components/layout/Navbar';
@@ -14,17 +14,7 @@ import { Contact } from './components/sections/Contact';
 import { Footer } from './components/layout/Footer';
 
 export default function App() {
-  const [isAssetsReady, setIsAssetsReady] = useState(false);
-  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
-
-  useEffect(() => {
-    // Cinematic minimum delay (2.5 seconds) so the loading screen doesn't just flash
-    const timer = setTimeout(() => setMinTimeElapsed(true), 2500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Screen is loading if either the assets aren't ready OR the minimum time hasn't passed
-  const isLoading = !(isAssetsReady && minTimeElapsed);
+  const { isLoading, onAssetsReady } = useAppLoading();
 
   return (
     <div className="min-h-screen relative">
@@ -40,7 +30,7 @@ export default function App() {
       <Hero />
       <About />
 
-      <Services onReady={() => setIsAssetsReady(true)} />
+      <Services onReady={onAssetsReady} />
 
       <Methodology />
 

@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "note": "Only significant reusable / structurally-important UI components are listed. Section components (Hero, About, Services, Methodology, ProductStage, Market, Contact) are represented as screens rather than components. Small one-off SVG icons and the lucide-react icon library are excluded.",
+  "components": [
+    {
+      "name": "Navbar",
+      "note": "Fixed top navigation with scroll-reactive styling, in-page anchor links, primary CTAs, and a responsive mobile/tablet overlay menu.",
+      "id": "C-001"
+    },
+    {
+      "name": "Footer",
+      "note": "Site footer: brand blurb, social/contact links, quick-nav columns, and a newsletter email input (input has no submit handler — non-functional UI).",
+      "id": "C-002"
+    },
+    {
+      "name": "LoadingScreen",
+      "note": "Full-screen branded loading overlay gated on asset readiness + minimum display time, with sequential logo-then-background fade-out and body-scroll lock.",
+      "id": "C-003"
+    },
+    {
+      "name": "SEO",
+      "note": "Reusable document-head component (react-helmet-async) emitting title/description/keywords + Open Graph + Twitter card tags, all overridable via props.",
+      "id": "C-004"
+    },
+    {
+      "name": "ErrorBoundary",
+      "note": "Top-level React error boundary (wraps App in main.tsx) rendering a branded recovery fallback and a reload action.",
+      "id": "C-005"
+    },
+    {
+      "name": "GlassCard",
+      "note": "Generic glassmorphism card wrapper (dna-glass-card). Defined in src/components/ui/GlassCard.tsx but NOT imported anywhere in the codebase — appears to be dead/unused code; flagged for human confirmation on whether to keep or remove.",
+      "id": "C-006"
+    },
+    {
+      "name": "ProductCard",
+      "note": "Domain component inside ProductStage that renders a single product from its typed block model (heading/text/list/media/button) in an alternating split layout; resolves list-item icons by name from an icon map.",
+      "id": "C-007"
+    }
+  ]
+}

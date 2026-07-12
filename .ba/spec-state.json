@@ -111,7 +111,15 @@
       "S-010"
     ],
     "flows": [],
-    "components": [],
+    "components": [
+      "C-001",
+      "C-002",
+      "C-003",
+      "C-004",
+      "C-005",
+      "C-006",
+      "C-007"
+    ],
     "metrics": [
       "M-001",
       "M-002",
@@ -130,7 +138,7 @@
     "feature_wont": 1,
     "screen": 11,
     "flow": 1,
-    "component": 1,
+    "component": 8,
     "metric": 5,
     "asset": 1,
     "change": 1,

@@ -10,12 +10,62 @@
   "pending_reconcile": [],
   "changes": [],
   "onboarding": {
-    "stage1": "pending",
+    "stage1": "drafted",
     "stage2": "pending",
     "stage3": "pending",
     "business_context": "pending",
     "assessment": "pending",
-    "strategy": "pending"
+    "strategy": "pending",
+    "feature_review": [
+      {
+        "key": "Lead Capture Contact Form",
+        "status": "pending"
+      },
+      {
+        "key": "Site Navigation & Section Anchors",
+        "status": "pending"
+      },
+      {
+        "key": "Hero Landing & Value Proposition",
+        "status": "pending"
+      },
+      {
+        "key": "Cinematic Loading Screen",
+        "status": "pending"
+      },
+      {
+        "key": "Services Scroll-Frame Animation",
+        "status": "pending"
+      },
+      {
+        "key": "Methodology Scroll Experience",
+        "status": "pending"
+      },
+      {
+        "key": "Proprietary Product Showcase",
+        "status": "pending"
+      },
+      {
+        "key": "SEO & Social Metadata",
+        "status": "pending"
+      },
+      {
+        "key": "Error Boundary Fallback",
+        "status": "pending"
+      },
+      {
+        "key": "About / Innovation DNA Section",
+        "status": "pending"
+      },
+      {
+        "key": "Market Reach Section",
+        "status": "pending"
+      },
+      {
+        "key": "Footer & Newsletter Field",
+        "status": "pending"
+      }
+    ]
   },
   "id_registry": {
     "stakeholders": [],

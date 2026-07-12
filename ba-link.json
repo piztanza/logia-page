@@ -1,0 +1,102 @@
+{
+  "version": "1.0",
+  "last_sync_sha": "18786d63595dab42c2d23a6bdb5e64107ddb0d5b",
+  "features": [
+    {
+      "id": "F-001",
+      "title": "Lead Capture Contact Form",
+      "files": ["src/components/sections/Contact.tsx"],
+      "flows": [],
+      "fingerprint": "sha256:79a043461cbe03600bcc75d71a388ef6b08df574a950940667313fbf9fc57189",
+      "tests": []
+    },
+    {
+      "id": "F-002",
+      "title": "Site Navigation & Section Anchors",
+      "files": ["src/components/layout/Navbar.tsx"],
+      "flows": [],
+      "fingerprint": "sha256:45aa59212ca86f6d803ad876ea0176d1698faece8720d9ccbf1e2cd07165bf3a",
+      "tests": []
+    },
+    {
+      "id": "F-003",
+      "title": "Hero Landing & Value Proposition",
+      "files": ["src/components/sections/Hero.tsx"],
+      "flows": [],
+      "fingerprint": "sha256:e0451ebf58a854c813e97abd97d4cbf5674d30bdab45542510a7b973bdff3cd3",
+      "tests": []
+    },
+    {
+      "id": "F-004",
+      "title": "Cinematic Loading Screen",
+      "files": ["src/components/ui/LoadingScreen.tsx", "src/App.tsx"],
+      "flows": [],
+      "fingerprint": "sha256:0b37c1fd161280905682baccb7f81cc3639a8aef08f866fe0be53da6bffcc24f",
+      "tests": []
+    },
+    {
+      "id": "F-005",
+      "title": "Services Scroll-Frame Animation",
+      "files": ["src/components/sections/Services.tsx", "src/data/services.ts"],
+      "flows": [],
+      "fingerprint": "sha256:8068227acfbbcf5ff5b4313301b0a5d619bf9302083413ee47633a7bc7970f6f",
+      "tests": []
+    },
+    {
+      "id": "F-006",
+      "title": "Methodology Scroll Experience",
+      "files": ["src/components/sections/Methodology.tsx", "src/data/methodology.ts"],
+      "flows": [],
+      "fingerprint": "sha256:7c877c9f9688d84f97a44d181b6470a9e87e797b3b1f008ea1b940e384d0483b",
+      "tests": []
+    },
+    {
+      "id": "F-007",
+      "title": "Proprietary Product Showcase",
+      "files": ["src/components/sections/ProductStage.tsx", "src/data/products.ts", "src/types/product-showcase.ts"],
+      "flows": [],
+      "fingerprint": "sha256:467cb89c33299f53c28e744f230659ae43a5a23cee80a894eb74d1f1b88750b6",
+      "tests": []
+    },
+    {
+      "id": "F-008",
+      "title": "SEO & Social Metadata",
+      "files": ["src/components/common/SEO.tsx"],
+      "flows": [],
+      "fingerprint": "sha256:a62020e79c531257bb96d8acec490020c489a5b0092b12d62c091fb23ba710de",
+      "tests": []
+    },
+    {
+      "id": "F-009",
+      "title": "Error Boundary Fallback",
+      "files": ["src/components/common/ErrorBoundary.tsx", "src/main.tsx"],
+      "flows": [],
+      "fingerprint": "sha256:78cf0f3e78d11095c4370875101eb3a0640cdbe0601926b7ecd86eb83456ae0e",
+      "tests": []
+    },
+    {
+      "id": "F-010",
+      "title": "About / Innovation DNA Section",
+      "files": ["src/components/sections/About.tsx"],
+      "flows": [],
+      "fingerprint": "sha256:a327a76132c6b43d33922818e210ac4fdf3b4753280bf0d761acc15fd2736024",
+      "tests": []
+    },
+    {
+      "id": "F-011",
+      "title": "Market Reach Section",
+      "files": ["src/components/sections/Market.tsx"],
+      "flows": [],
+      "fingerprint": "sha256:7e5c67b350580090af85d0065062f573f624074b3bd6e096f7055dcacdd516c2",
+      "tests": []
+    },
+    {
+      "id": "F-012",
+      "title": "Footer & Newsletter Field",
+      "files": ["src/components/layout/Footer.tsx"],
+      "flows": [],
+      "fingerprint": "sha256:a652bec3383cf011341fa9b5eb3177b541ea3dff35b9bb3f888629af2b6ae10f",
+      "tests": []
+    }
+  ]
+}

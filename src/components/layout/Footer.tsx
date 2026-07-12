@@ -1,6 +1,49 @@
 import React from 'react';
 import { Linkedin, Github, ArrowRight } from 'lucide-react';
 
+type FooterLink = {
+  readonly label: string;
+  readonly href: string;
+};
+
+// Product destinations are not yet wired to in-page sections (placeholder "#").
+const PRODUCT_LINKS: readonly FooterLink[] = [
+  { label: 'Enterprise Audit', href: '#' },
+  { label: 'Agentic Engine', href: '#' },
+  { label: 'SME SaaS', href: '#' },
+  { label: 'Custom Dev', href: '#' },
+];
+
+const COMPANY_LINKS: readonly FooterLink[] = [
+  { label: 'About Us', href: '#about' },
+  { label: 'Methodology', href: '#methodology' },
+  { label: 'Market', href: '#market' },
+  { label: 'Contact', href: '#contact' },
+];
+
+const LEGAL_LINKS: readonly FooterLink[] = [
+  { label: 'Privacy Policy', href: '#' },
+  { label: 'Terms of Service', href: '#' },
+  { label: 'Cookies', href: '#' },
+];
+
+// Presentational column shared by the Products and Company link groups.
+const FooterLinkColumn: React.FC<{ title: string; links: readonly FooterLink[] }> = ({ title, links }) => (
+  <div className="space-y-6">
+    <h4 className="text-white text-xs font-bold uppercase tracking-[0.2em]">{title}</h4>
+    <ul className="space-y-4">
+      {links.map((link) => (
+        <li key={link.label}>
+          <a href={link.href} className="text-brand-gray hover:text-brand-accent text-sm transition-colors font-light flex items-center group">
+            <span className="w-0 group-hover:w-2 h-px bg-brand-accent mr-0 group-hover:mr-2 transition-all duration-300" />
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#030304] border-t border-white/5 pt-16 pb-10 relative z-10 overflow-hidden">
@@ -42,38 +85,9 @@ export const Footer: React.FC = () => {
 
           {/* Links Columns */}
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-12">
-            <div className="space-y-6">
-              <h4 className="text-white text-xs font-bold uppercase tracking-[0.2em]">Products</h4>
-              <ul className="space-y-4">
-                {['Enterprise Audit', 'Agentic Engine', 'SME SaaS', 'Custom Dev'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-brand-gray hover:text-brand-accent text-sm transition-colors font-light flex items-center group">
-                      <span className="w-0 group-hover:w-2 h-px bg-brand-accent mr-0 group-hover:mr-2 transition-all duration-300" />
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <FooterLinkColumn title="Products" links={PRODUCT_LINKS} />
 
-            <div className="space-y-6">
-              <h4 className="text-white text-xs font-bold uppercase tracking-[0.2em]">Company</h4>
-              <ul className="space-y-4">
-                {[
-                  { label: 'About Us', href: '#about' },
-                  { label: 'Methodology', href: '#methodology' },
-                  { label: 'Market', href: '#market' },
-                  { label: 'Contact', href: '#contact' },
-                ].map((item) => (
-                  <li key={item.label}>
-                    <a href={item.href} className="text-brand-gray hover:text-brand-accent text-sm transition-colors font-light flex items-center group">
-                      <span className="w-0 group-hover:w-2 h-px bg-brand-accent mr-0 group-hover:mr-2 transition-all duration-300" />
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <FooterLinkColumn title="Company" links={COMPANY_LINKS} />
 
             <div className="space-y-6 col-span-2 md:col-span-1">
               <h4 className="text-white text-xs font-bold uppercase tracking-[0.2em]">Newsletter</h4>
@@ -104,9 +118,9 @@ export const Footer: React.FC = () => {
           </div>
           
           <div className="flex gap-8 text-[10px] font-mono text-brand-gray/40 uppercase tracking-widest">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Cookies</a>
+            {LEGAL_LINKS.map((link) => (
+              <a key={link.label} href={link.href} className="hover:text-white transition-colors">{link.label}</a>
+            ))}
           </div>
         </div>
       </div>

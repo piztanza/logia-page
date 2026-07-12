@@ -19,7 +19,8 @@
     "feature_review": [
       {
         "key": "Lead Capture Contact Form",
-        "status": "pending"
+        "status": "confirmed",
+        "note": "Primary conversion mechanism — load-bearing."
       },
       {
         "key": "Site Navigation & Section Anchors",

@@ -12,7 +12,7 @@
   "onboarding": {
     "stage1": "confirmed",
     "stage2": "pending",
-    "stage3": "drafted",
+    "stage3": "confirmed",
     "business_context": "confirmed",
     "assessment": "pending",
     "strategy": "pending",

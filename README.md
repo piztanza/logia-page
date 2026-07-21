@@ -1,28 +1,44 @@
-# Logia Initiative — Landing Page
+# app-v2
 
-Company profile landing page for Logia Initiative, built with Vite + React 19 + TypeScript.
+Rebuilt React SPA (Create React App + TypeScript) for Logia Initiative. No Vite. Clean styling with CSS Modules and scoped globals. Ready for Google Cloud Run.
 
-## Local Development
+## Scripts
+- npm start
+- npm run build
 
-```bash
+## Run locally
+```
 npm ci
-npm run dev       # Dev server on port 3000
-npm run build     # Production build → dist/
-npm run preview   # Preview production build
-npm run lint      # Type-check (tsc --noEmit)
+npm start
+```
+
+## Build
+```
+npm run build
 ```
 
 ## Docker
-
-The container builds the Vite bundle and serves the output through nginx on port 8080.
-
-```bash
-docker build -t logia-page:latest .
-docker run -p 8080:8080 logia-page:latest
+```
+docker build -t app-v2:latest .
 ```
 
-Open `http://localhost:8080`.
+Container listens on $PORT (8080). Used for container-based hosting; the AWS
+dev environment does not go through this path.
 
-## Deployment
+## Deployment (AWS dev)
 
-Auto-deploys to AWS when the configured branch is updated. The container listens on `$PORT=8080`.
+Pushing to `dev-aws` runs `.github/workflows/deploy-aws.yml`, which builds the
+CRA bundle and publishes `build/` to S3, then invalidates CloudFront.
+
+The build runs with `SKIP_SNAP=true`, so the react-snap prerender step is
+skipped in CI (it needs Chromium).
+
+Because this app uses `createBrowserRouter` with real routes (`/products`,
+`/schedule`), the CloudFront distribution must map 403 and 404 responses to
+`/index.html` with a 200 status. Without that, deep links and refreshes on
+those routes return an S3 error instead of the app.
+
+Required repo secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`,
+`AWS_REGION`, `DEV_S3_BUCKET_NAME`, `DEV_CLOUDFRONT_DISTRIBUTION_ID`.
+
+
